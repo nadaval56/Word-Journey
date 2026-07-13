@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="מסע מילה — כלי חינוכי שמתחקה אחרי מסעי ההַשְׁאָלה של מילים עבריות אל שפות העולם">
+  <title>מסע מילה — Word Journey</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1 class="site-title">🧭 מסע מילה</h1>
+    <p class="site-subtitle">לאן נדדו מילים עבריות, ומה קרה להן בדרך</p>
+    <nav class="tabs" role="tablist" aria-label="ניווט ראשי">
+      <a href="#/browse" class="tab" data-route="browse" role="tab">מסעי מילים</a>
+      <a href="#/game" class="tab" data-route="game" role="tab">🕵️ מצב בלש</a>
+      <a href="#/about" class="tab" data-route="about" role="tab">מה זה?</a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ======= תצוגת עיון: חיפוש, סינון ורשימת מילים ======= -->
+    <section id="view-browse" class="view" hidden>
+      <div class="filters" aria-label="חיפוש וסינון">
+        <input type="search" id="search-input" class="search-input"
+               placeholder="חיפוש מילה, צורה לועזית או משמעות…" autocomplete="off">
+        <div class="filter-row">
+          <select id="filter-mechanism" class="filter-select" aria-label="סינון לפי מנגנון">
+            <option value="">כל המנגנונים</option>
+          </select>
+          <select id="filter-certainty" class="filter-select" aria-label="סינון לפי רמת ודאות">
+            <option value="">כל רמות הוודאות</option>
+          </select>
+          <select id="filter-lang" class="filter-select" aria-label="סינון לפי שפת יעד">
+            <option value="">כל שפות היעד</option>
+          </select>
+        </div>
+        <div class="certainty-legend" id="certainty-legend"></div>
+      </div>
+      <p id="results-count" class="results-count" aria-live="polite"></p>
+      <div id="word-list" class="word-list"></div>
+    </section>
+
+    <!-- ======= תצוגת מילה בודדת: מסע / עץ ======= -->
+    <section id="view-word" class="view" hidden>
+      <a href="#/browse" class="back-link">→ חזרה לכל המילים</a>
+      <div id="word-detail"></div>
+    </section>
+
+    <!-- ======= מצב בלש ======= -->
+    <section id="view-game" class="view" hidden>
+      <div id="game-container"></div>
+    </section>
+
+    <!-- ======= הסבר: הַשְׁאָלה מול קרבה ======= -->
+    <section id="view-about" class="view" hidden>
+      <article class="about">
+        <h2>מה הכלי הזה מלמד?</h2>
+        <p>
+          מילים עבריות נדדו אל שפות העולם — לפעמים עד שכמעט אי אפשר לזהות אותן
+          (הייתם מנחשים ש־<bdi lang="fr">samedi</bdi> הצרפתית היא <strong>שַׁבָּת</strong>?).
+          הכלי הזה מתחקה אחרי <strong>מסעי הַשְׁאָלה אמיתיים ומתועדים</strong>:
+          לאן דלפה המילה, דרך אילו שפות־מתווכות, ואיזה שיבוש צליל ומשמעות היא ספגה בכל תחנה.
+        </p>
+
+        <h2>⚠️ ההבחנה הכי חשובה: הַשְׁאָלה מול בני־דודים</h2>
+        <p>שתי מילים בשתי שפות יכולות להיות דומות משתי סיבות שונות לחלוטין:</p>
+        <div class="about-compare">
+          <div class="about-card">
+            <h3>🧳 הַשְׁאָלה (borrowing)</h3>
+            <p>
+              המילה <em>עברה מדובר לדובר</em>: דוברי עברית הכניסו מילה עברית לשפה אחרת —
+              דרך מסחר, סלנג, או תרגומי מקרא. יש לה מסלול, תחנות, ותאריכים.
+              <strong>זה מה שהכלי מציג.</strong>
+            </p>
+          </div>
+          <div class="about-card">
+            <h3>👪 קרבה / ירושה (cognate)</h3>
+            <p>
+              המילים דומות כי שתי השפות הן <em>אחיות</em> — צאצאיות של אם קדומה משותפת.
+              עברית וערבית, למשל, שתיהן בנות של הפרוטו־שמית. לכן
+              <strong>שָׁלוֹם / سلام</strong> הן בנות־דודות, לא הַשְׁאָלה —
+              ואסור לצייר להן "מסע".
+            </p>
+          </div>
+        </div>
+        <p>
+          <strong>איך מבחינים?</strong> דוגמת הליבה שלנו היא מהגֶעֶז (השפה השמית של אתיופיה העתיקה):
+          המילה <bdi>ጸባዖת (tsebaot)</bdi> — "צְבָאוֹת" — היא <strong>הַשְׁאָלה</strong> מעברית,
+          כי לגעז כבר הייתה מילה מקומית משלה לצבא (<bdi>seraweet</bdi>), והעברית נכנסה בכל זאת, ברובד הדתי,
+          דרך תרגום המקרא. לעומתה <bdi>አማን (aman)</bdi> — "אמת" — היא כנראה
+          <strong>בת־דודה מלידה</strong>, מהשורש השמי המשותף אמ"ן.
+          אותה שפה, שני סיפורים שונים לגמרי.
+        </p>
+
+        <h2>ארבעה מנגנוני הַשְׁאָלה</h2>
+        <ul class="about-mechanisms" id="about-mechanisms"></ul>
+
+        <h2>🏷️ למה יש תגי ודאות?</h2>
+        <p>
+          האינטרנט מוצף מיתוסים אטימולוגיים — סיפורים יפים שאין להם ביסוס.
+          לכן כל ערך במאגר נושא תג ודאות ורשימת מקורות:
+        </p>
+        <div class="certainty-legend" id="about-certainty"></div>
+        <p>
+          ערכים המסומנים <span class="badge badge-folk">עממי — נדחה</span> נכללים <em>בכוונה</em>:
+          הם מיתוסים נפוצים, ולצד כל אחד מוסבר למה המחקר דוחה אותו.
+          ללמוד לזהות סיפור יפה שאינו נכון — זה חלק מהשיעור.
+        </p>
+
+        <h2>עיקרון הברזל</h2>
+        <p>
+          דמיון צלילי לבדו אינו ראיה. מסע אמיתי דורש <strong>שרשרת תיעוד</strong>:
+          מי שאל, ממי, מתי, ובאיזה ערוץ. כשאין שרשרת — אומרים בכנות "לא יודעים".
+          עדיף מאגר קטן ומדויק ממאגר גדול ומפוקפק.
+        </p>
+      </article>
+    </section>
+
+    <p id="load-error" class="load-error" hidden>
+      שגיאה בטעינת מאגר המילים. אם פתחתם את הקובץ ישירות מהמחשב, הריצו שרת מקומי:
+      <code>python3 -m http.server</code>
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <p>מסע מילה · כלי חינוכי ללימוד בלשנות · הנתונים מגובים במקורות אטימולוגיים — ראו README</p>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

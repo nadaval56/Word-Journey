@@ -1,0 +1,518 @@
+/* ============================================================
+   מסע מילה — עיצוב
+   RTL, מובייל תחילה, ללא תלות חיצונית.
+   ============================================================ */
+
+:root {
+  /* צבעי בסיס — נושא "מפה עתיקה" חמים */
+  --bg: #faf6ef;
+  --surface: #ffffff;
+  --ink: #2b2318;
+  --ink-soft: #6b5d4a;
+  --line: #e3d9c6;
+  --accent: #8a5a2b;
+  --accent-soft: #f3e8d7;
+
+  /* צבעי ודאות (סעיף 4 במפרט) */
+  --c-documented: #2e7d32;
+  --c-documented-bg: #e6f2e6;
+  --c-probable: #9a7d00;
+  --c-probable-bg: #faf3d1;
+  --c-debated: #c05e12;
+  --c-debated-bg: #fdeadb;
+  --c-folk: #b3261e;
+  --c-folk-bg: #fbe3e1;
+
+  --radius: 12px;
+  --shadow: 0 1px 4px rgba(43, 35, 24, .12);
+  --tap: 44px; /* גודל מגע מינימלי לטאבלט */
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", "Arial Hebrew", "Noto Sans Hebrew", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* צורות לועזיות בתוך טקסט עברי */
+bdi, [dir="ltr"] { unicode-bidi: isolate; }
+
+/* ---------- כותרת האתר וניווט ---------- */
+
+.site-header {
+  background: linear-gradient(180deg, #3d2f1e, #55432c);
+  color: #f7efe2;
+  padding: 1.2rem 1rem .6rem;
+  text-align: center;
+}
+
+.site-title { margin: 0; font-size: 1.9rem; letter-spacing: .02em; }
+
+.site-subtitle { margin: .2rem 0 .9rem; color: #d9c9ac; font-size: 1rem; }
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: .4rem;
+  flex-wrap: wrap;
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: .3rem 1.1rem;
+  border-radius: 10px 10px 0 0;
+  color: #ead9bb;
+  text-decoration: none;
+  font-weight: 600;
+  background: rgba(255, 255, 255, .07);
+}
+
+.tab.active { background: var(--bg); color: var(--ink); }
+
+main { max-width: 980px; margin: 0 auto; padding: 1rem; }
+
+/* ---------- חיפוש וסינון ---------- */
+
+.filters { margin-bottom: .8rem; }
+
+.search-input {
+  width: 100%;
+  min-height: var(--tap);
+  padding: .5rem .9rem;
+  font-size: 1.05rem;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.search-input:focus { outline: 2px solid var(--accent); }
+
+.filter-row {
+  display: flex;
+  gap: .5rem;
+  margin-top: .5rem;
+  flex-wrap: wrap;
+}
+
+.filter-select {
+  flex: 1 1 160px;
+  min-height: var(--tap);
+  padding: .3rem .6rem;
+  font-size: .95rem;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.results-count { color: var(--ink-soft); font-size: .9rem; margin: .3rem .2rem .6rem; }
+
+/* ---------- תגי ודאות ומנגנון ---------- */
+
+.badge {
+  display: inline-block;
+  padding: .1rem .6rem;
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.badge-documented { background: var(--c-documented-bg); color: var(--c-documented); }
+.badge-probable   { background: var(--c-probable-bg);   color: var(--c-probable); }
+.badge-debated    { background: var(--c-debated-bg);    color: var(--c-debated); }
+.badge-folk       { background: var(--c-folk-bg);       color: var(--c-folk); }
+
+.badge-mechanism {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.certainty-legend {
+  display: flex;
+  gap: .4rem;
+  flex-wrap: wrap;
+  margin-top: .6rem;
+}
+
+/* ---------- רשימת מילים ---------- */
+
+.word-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: .8rem;
+}
+
+.word-card {
+  display: block;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: .9rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow);
+  transition: transform .1s ease;
+}
+
+.word-card:active { transform: scale(.98); }
+
+.word-card.folk { border-color: var(--c-folk); border-style: dashed; }
+
+.word-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .5rem;
+}
+
+.word-card .hebrew-word { font-size: 1.5rem; font-weight: 800; margin: 0; }
+
+.word-card .word-meaning { color: var(--ink-soft); margin: .1rem 0 .5rem; font-size: .95rem; }
+
+.word-card .word-targets { font-size: .95rem; margin: 0 0 .5rem; }
+
+.word-card-badges { display: flex; gap: .35rem; flex-wrap: wrap; }
+
+/* ---------- תצוגת מילה ---------- */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.word-header { margin-bottom: .6rem; }
+
+.word-header h2 { font-size: 2.1rem; margin: .1rem 0; }
+
+.word-header .translit { color: var(--ink-soft); font-size: 1rem; }
+
+.word-note {
+  background: var(--accent-soft);
+  border-inline-start: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: .6rem .9rem;
+  margin: .8rem 0;
+}
+
+/* אזהרת אטימולוגיה עממית — חובה בולטת (סעיף 4) */
+.folk-warning {
+  background: var(--c-folk-bg);
+  border: 2px solid var(--c-folk);
+  border-radius: var(--radius);
+  padding: .8rem 1rem;
+  margin: .8rem 0;
+}
+
+.folk-warning h3 { margin: 0 0 .3rem; color: var(--c-folk); }
+
+.debated-warning {
+  background: var(--c-debated-bg);
+  border: 2px dashed var(--c-debated);
+  border-radius: var(--radius);
+  padding: .8rem 1rem;
+  margin: .8rem 0;
+}
+
+.sources {
+  font-size: .88rem;
+  color: var(--ink-soft);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: .5rem .9rem;
+  margin-top: 1rem;
+}
+
+.sources ul { margin: .2rem 0 0; padding-inline-start: 1.2rem; }
+
+/* ---------- רצועת מסע (Journey Strip) ---------- */
+
+.journey-block { margin: 1.2rem 0; }
+
+.journey-title { font-size: 1.05rem; margin: 0 0 .4rem; color: var(--ink-soft); }
+
+.journey-strip {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  overflow-x: auto;
+  padding: .5rem .2rem .9rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.station {
+  flex: 0 0 190px;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: .7rem .8rem;
+  box-shadow: var(--shadow);
+}
+
+.station.origin { border-color: var(--accent); background: #fffdf7; }
+
+.station .station-lang {
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 0 .2rem;
+}
+
+.station .station-form { font-size: 1.2rem; font-weight: 800; margin: 0; overflow-wrap: break-word; }
+
+.station .station-translit { font-size: .85rem; color: var(--ink-soft); margin: 0; }
+
+.station .station-meaning { font-size: .88rem; margin: .3rem 0 0; }
+
+.station .station-note { font-size: .8rem; color: var(--accent); margin: .3rem 0 0; font-style: italic; }
+
+/* המחבר בין תחנות: חץ + הסבר השינוי (הבשר החינוכי) */
+.hop {
+  flex: 0 0 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 .4rem;
+  text-align: center;
+}
+
+.hop .hop-arrow { font-size: 1.4rem; color: var(--accent); line-height: 1; }
+
+.hop .hop-change { font-size: .78rem; color: var(--ink-soft); margin-top: .25rem; }
+
+/* תחנה מוסתרת במצב חשיפה הדרגתית (מצב בלש) */
+.station.hidden-station, .hop.hidden-station { display: none; }
+
+/* ---------- עץ הסתעפות ---------- */
+
+.view-toggle { display: flex; gap: .4rem; margin: .8rem 0; }
+
+.view-toggle button {
+  min-height: var(--tap);
+  padding: .3rem 1rem;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  border-radius: 999px;
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.view-toggle button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.tree { margin: .6rem 0; }
+
+.tree-node-card {
+  display: inline-block;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: .4rem .8rem;
+  box-shadow: var(--shadow);
+  max-width: 100%;
+}
+
+.tree-node-card.origin { border-color: var(--accent); background: #fffdf7; }
+
+.tree-node-card .station-lang { font-size: .75rem; font-weight: 700; color: var(--accent); margin: 0; }
+
+.tree-node-card .station-form { font-size: 1.05rem; font-weight: 800; margin: 0; }
+
+.tree-node-card .station-meaning { font-size: .82rem; color: var(--ink-soft); margin: 0; }
+
+.tree-children {
+  margin-inline-start: 1.1rem;
+  padding-inline-start: 1.1rem;
+  border-inline-start: 2px solid var(--line);
+}
+
+.tree-branch { position: relative; margin: .7rem 0; }
+
+/* קו אופקי קטן שמחבר ענף לקו האנכי */
+.tree-branch::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: -1.1rem;
+  top: 1.1rem;
+  width: .9rem;
+  border-top: 2px solid var(--line);
+}
+
+.tree-change {
+  font-size: .78rem;
+  color: var(--ink-soft);
+  margin: 0 0 .2rem;
+}
+
+.tree-change::before { content: "↓ "; color: var(--accent); }
+
+/* ---------- מצב בלש ---------- */
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.game-scores { display: flex; gap: .5rem; flex-wrap: wrap; }
+
+.score-chip {
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  padding: .2rem .8rem;
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+.score-chip .val { color: var(--accent); }
+
+.game-card {
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.2rem 1rem;
+  text-align: center;
+}
+
+.game-kicker { color: var(--ink-soft); font-size: .95rem; margin: 0; }
+
+.game-mystery {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin: .5rem 0 .2rem;
+  overflow-wrap: break-word;
+}
+
+.game-hint { color: var(--ink-soft); margin: 0 0 1rem; }
+
+.game-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: .6rem;
+  margin-top: .8rem;
+}
+
+.game-option {
+  min-height: var(--tap);
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: .6rem;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.game-option:not(:disabled):hover { border-color: var(--accent); }
+
+.game-option.correct { border-color: var(--c-documented); background: var(--c-documented-bg); }
+
+.game-option.wrong { border-color: var(--c-folk); background: var(--c-folk-bg); }
+
+.game-option:disabled { opacity: .85; }
+
+.game-feedback { font-size: 1.15rem; font-weight: 800; margin: .8rem 0 .2rem; }
+
+.game-feedback.good { color: var(--c-documented); }
+
+.game-feedback.bad { color: var(--c-folk); }
+
+.game-explain { text-align: start; margin-top: .8rem; }
+
+.game-actions { display: flex; justify-content: center; gap: .6rem; margin-top: 1rem; flex-wrap: wrap; }
+
+.btn {
+  min-height: var(--tap);
+  padding: .5rem 1.4rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-secondary { background: var(--surface); color: var(--accent); border: 2px solid var(--accent); }
+
+/* חשיפת מסע הדרגתית במצב בלש */
+.reveal-area { text-align: start; margin-top: 1rem; }
+
+/* ---------- עמוד "מה זה" ---------- */
+
+.about h2 { color: var(--accent); margin-top: 1.6rem; }
+
+.about-compare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: .8rem;
+  margin: .8rem 0;
+}
+
+.about-card {
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: .8rem 1rem;
+}
+
+.about-card h3 { margin: 0 0 .4rem; }
+
+.about-mechanisms { list-style: none; padding: 0; }
+
+.about-mechanisms li {
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: .6rem .9rem;
+  margin: .5rem 0;
+}
+
+/* ---------- שונות ---------- */
+
+.load-error {
+  background: var(--c-folk-bg);
+  border: 2px solid var(--c-folk);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.site-footer {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: .85rem;
+  padding: 1.5rem 1rem 2rem;
+}
+
+.empty-state { text-align: center; color: var(--ink-soft); padding: 2rem 0; }
+
+/* מובייל צר: כרטיסי תחנה קטנים יותר */
+@media (max-width: 480px) {
+  .station { flex-basis: 165px; }
+  .hop { flex-basis: 120px; }
+  .site-title { font-size: 1.5rem; }
+  .game-mystery { font-size: 1.7rem; }
+}

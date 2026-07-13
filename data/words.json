@@ -1,0 +1,782 @@
+{
+  "meta": {
+    "version": 1,
+    "updated": "2026-07-13",
+    "mechanisms": {
+      "internal-jewish": {
+        "label": "רובד עברי בשפה יהודית",
+        "short": "שפה יהודית",
+        "description": "העברית אינה \"מושאלת\" אלא שכבה קבועה בשפה יהודית (יידיש, לאדינו ועוד), שעוברת שיבוש פונטי מקומי."
+      },
+      "leak-to-majority": {
+        "label": "דליפה לשפת הרוב",
+        "short": "דליפה לרוב",
+        "description": "מילים עבריות שזלגו מיידיש אל גרמנית ואנגלית, לרוב דרך סלנג של סוחרים ושפת הגנבים הסודית (רוטוולש)."
+      },
+      "ancient-religious": {
+        "label": "הַשְׁאָלה דתית עתיקה",
+        "short": "דתית עתיקה",
+        "description": "מילים עבריות וארמיות שנכנסו לשפות אחרות דרך תרגומי מקרא ופולחן — לא דרך מגע יומיומי."
+      },
+      "wanderword": {
+        "label": "מילה נודדת",
+        "short": "מילה נודדת",
+        "description": "מילה ששוטטה משמית ליוונית, ללטינית ולשפות אירופה לאורך אלפי שנים, מעבר להקשר היהודי."
+      }
+    },
+    "certainty": {
+      "documented": { "label": "מתועד", "description": "קונצנזוס מחקרי — מילונים אטימולוגיים מרכזיים מסכימים." },
+      "probable": { "label": "משוער", "description": "סביר ויש תמיכה מחקרית, אך לא ודאי." },
+      "debated": { "label": "שנוי במחלוקת", "description": "קיימות אטימולוגיות מתחרות במחקר." },
+      "folk": { "label": "עממי — נדחה", "description": "נטען באופן עממי אך אינו נתמך במחקר. מוצג בכוונה, כדי ללמד ספקנות." }
+    }
+  },
+  "words": [
+    {
+      "id": "shabbat",
+      "hebrew": "שַׁבָּת",
+      "translit": "shabbat",
+      "meaning": "יום המנוחה השביעי",
+      "mechanism": "wanderword",
+      "certainty": "documented",
+      "sources": [
+        "OED – \"Sabbath\", \"sabbat\"",
+        "TLFi/CNRTL – \"samedi\"",
+        "Max Weinreich, History of the Yiddish Language",
+        "Wiktionary – σάββατον, sabbatum"
+      ],
+      "note": "מילה אחת, שלושה גורלות: ביידיש היא נשארה בבית ורק שינתה מבטא; דרך היוונית והלטינית היא הפכה לשם של יום בלוח האירופי — ובצרפתית היא כבר כמעט בלתי מזוהה.",
+      "journeys": [
+        {
+          "title": "אל היידיש",
+          "mechanism": "internal-jewish",
+          "path": [
+            { "lang": "עברית", "form": "שַׁבָּת", "translit": "shabbat", "meaning": "יום המנוחה", "note": "מקור" },
+            { "lang": "יידיש", "form": "שבת", "translit": "shabes", "meaning": "שבת", "change": "בהגייה האשכנזית תי\"ו לא־דגושה נהגית s, וההטעמה עוברת מלעיל: shaBAT ‏← SHAbes" }
+          ]
+        },
+        {
+          "title": "אל הצרפתית — samedi",
+          "mechanism": "wanderword",
+          "path": [
+            { "lang": "עברית", "form": "שַׁבָּת", "translit": "shabbat", "meaning": "יום המנוחה", "note": "מקור" },
+            { "lang": "יוונית", "form": "σάββατον", "translit": "sabbaton", "meaning": "שבת", "change": "ליוונית אין צליל ש׳ — היא נעשית s; נוספת סיומת יוונית ‎-on" },
+            { "lang": "לטינית", "form": "sabbatum", "translit": "sabbatum", "meaning": "שבת", "change": "הסיומת היוונית מוחלפת בסיומת לטינית ‎-um" },
+            { "lang": "לטינית עממית", "form": "sambati dies", "translit": "sambati dies", "meaning": "יום השבת", "change": "נוסף עיצור אפי m בתוך המילה (כמו בגרמנית Samstag), ומצטרפת המילה dies — \"יום\"" },
+            { "lang": "צרפתית", "form": "samedi", "translit": "samedi", "meaning": "יום שבת", "change": "sambati dies מתכווץ ל־samedi. משבת העברית נותרו בקושי s ו־m — כמעט בלתי מזוהה!" }
+          ]
+        },
+        {
+          "title": "אל הספרדית — sábado",
+          "mechanism": "wanderword",
+          "path": [
+            { "lang": "עברית", "form": "שַׁבָּת", "translit": "shabbat", "meaning": "יום המנוחה", "note": "מקור" },
+            { "lang": "יוונית", "form": "σάββατον", "translit": "sabbaton", "meaning": "שבת", "change": "ש׳ ← ‏s; נוספת סיומת יוונית" },
+            { "lang": "לטינית", "form": "sabbatum", "translit": "sabbatum", "meaning": "שבת", "change": "התאמה לדקדוק הלטיני" },
+            { "lang": "ספרדית", "form": "sábado", "translit": "sábado", "meaning": "יום שבת", "change": "t בין תנועות מתרככת ל־d — שינוי סדיר בספרדית. כאן המקור עדיין שקוף" }
+          ]
+        },
+        {
+          "title": "אל האיטלקית — sabato",
+          "mechanism": "wanderword",
+          "path": [
+            { "lang": "עברית", "form": "שַׁבָּת", "translit": "shabbat", "meaning": "יום המנוחה", "note": "מקור" },
+            { "lang": "יוונית", "form": "σάββατον", "translit": "sabbaton", "meaning": "שבת", "change": "ש׳ ← ‏s" },
+            { "lang": "לטינית", "form": "sabbatum", "translit": "sabbatum", "meaning": "שבת", "change": "התאמה לדקדוק הלטיני" },
+            { "lang": "איטלקית", "form": "sabato", "translit": "sabato", "meaning": "יום שבת", "change": "פישוט העיצור הכפול bb והשמטת הסיומת" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mazal",
+      "hebrew": "מַזָּל",
+      "translit": "mazal",
+      "meaning": "כוכב, גורל, הצלחה",
+      "mechanism": "leak-to-majority",
+      "certainty": "documented",
+      "sources": [
+        "Duden – \"Massel\"",
+        "DWDS – \"Massel\"",
+        "Klein, Etymological Dictionary of Hebrew"
+      ],
+      "note": "בונוס בלשי: גם העברית עצמה שאלה את המילה! מַזָּל הגיעה לעברית מאכדית (manzaltu — \"תחנת כוכב\"). מילים נודדות בשני הכיוונים.",
+      "journeys": [
+        {
+          "title": "אל הגרמנית — Massel",
+          "path": [
+            { "lang": "עברית", "form": "מַזָּל", "translit": "mazal", "meaning": "כוכב, גורל", "note": "מקור (בעצמו שאול מאכדית manzaltu)" },
+            { "lang": "יידיש", "form": "מזל", "translit": "mazl", "meaning": "מזל, הצלחה", "change": "שכבה עברית ביידיש; התנועה השנייה נחלשת" },
+            { "lang": "גרמנית", "form": "Massel", "translit": "masl", "meaning": "מזל, פוקס", "change": "דרך רוטוולש וסלנג הסוחרים; z נהגית כ־s גרמנית. ‏\"Massel haben\" = היה לו מזל" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shlimazl",
+      "hebrew": "שְׁלִים־מַזָּל",
+      "translit": "shlim-mazal",
+      "meaning": "ביש מזל, צרה",
+      "mechanism": "leak-to-majority",
+      "certainty": "documented",
+      "sources": [
+        "Duden – \"Schlamassel\"",
+        "DWDS – \"Schlamassel\"",
+        "OED – \"shlimazel\""
+      ],
+      "note": "מילת כלאיים: החצי השני עברי (מזל), והחצי הראשון ככל הנראה גרמני (schlimm — \"רע\"; יש המקשרים גם לארמית שְׁלִים). הרכבה דו־לשונית כזו היא סימן היכר של יידיש.",
+      "journeys": [
+        {
+          "title": "אל הגרמנית — Schlamassel",
+          "path": [
+            { "lang": "עברית + גרמנית", "form": "shlim + מַזָּל", "translit": "shlim-mazal", "meaning": "מזל רע", "note": "מקור כפול: מזל העברית עם shlim (\"רע\")" },
+            { "lang": "יידיש", "form": "שלימזל", "translit": "shlimazl", "meaning": "ביש מזל; אדם ביש־גדא", "change": "שני הרכיבים מתלכדים למילה אחת" },
+            { "lang": "גרמנית", "form": "Schlamassel", "translit": "shlamasl", "meaning": "צרה, ברוך, בלגן", "change": "התנועה הראשונה נפתחת ל־a, והמשמעות זזה מ\"אדם ביש מזל\" ל\"מצב ביש\"" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gannav",
+      "hebrew": "גַּנָּב",
+      "translit": "gannav",
+      "meaning": "גנב",
+      "mechanism": "leak-to-majority",
+      "certainty": "documented",
+      "sources": [
+        "Rendsburg, \"Rotwelsch, Hebrew Loanwords in\" (EHLL, Brill)",
+        "Duden – \"Ganove\"",
+        "OED – \"gonif / ganef\""
+      ],
+      "note": "הדוגמה הקלאסית לדליפה דרך שפת הגנבים: מילה עברית שנכנסה לסלנג הפשע הגרמני (רוטוולש) ומשם לשפה הכללית.",
+      "journeys": [
+        {
+          "title": "אל הגרמנית — Ganove",
+          "path": [
+            { "lang": "עברית", "form": "גַּנָּב", "translit": "gannav", "meaning": "גנב", "note": "מקור" },
+            { "lang": "יידיש", "form": "גנבֿ", "translit": "ganev", "meaning": "גנב", "change": "שכבה עברית ביידיש; בי\"ת רפה נהגית v" },
+            { "lang": "רוטוולש / גרמנית", "form": "Ganove", "translit": "ganove", "meaning": "פושע, עבריין", "change": "דרך שפת הגנבים; צורת הריבוי ganovim השפיעה על הצורה Ganove(n)" }
+          ]
+        },
+        {
+          "title": "אל האנגלית — ganef",
+          "path": [
+            { "lang": "עברית", "form": "גַּנָּב", "translit": "gannav", "meaning": "גנב", "note": "מקור" },
+            { "lang": "יידיש", "form": "גנבֿ", "translit": "ganev", "meaning": "גנב", "change": "שכבה עברית ביידיש" },
+            { "lang": "אנגלית", "form": "ganef / gonif", "translit": "ganef", "meaning": "גנב, נוכל", "change": "הגיעה עם מהגרים דוברי יידיש לארה\"ב; v סופית מאבדת קוליות ונהגית f" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "melakha",
+      "hebrew": "מְלָאכָה",
+      "translit": "melakha",
+      "meaning": "עבודה, מלאכה",
+      "mechanism": "leak-to-majority",
+      "certainty": "documented",
+      "sources": [
+        "Duden – \"Maloche\", \"malochen\"",
+        "DWDS – \"malochen\"",
+        "Rendsburg, \"Rotwelsch, Hebrew Loanwords in\" (EHLL, Brill)"
+      ],
+      "note": "דוגמה מצוינת לשינוי צליל שיטתי: הקמץ העברי נהגה o בהגייה האשכנזית — ולכן melakha נעשית meloche. אותו שינוי בדיוק מופיע גם ב־shabbes וב־takhles.",
+      "journeys": [
+        {
+          "title": "אל הגרמנית — malochen",
+          "path": [
+            { "lang": "עברית", "form": "מְלָאכָה", "translit": "melakha", "meaning": "עבודה", "note": "מקור" },
+            { "lang": "יידיש", "form": "מלאכה", "translit": "melokhe", "meaning": "מלאכה, אומנות", "change": "הזזת a‏←‏o: קמץ נהגה o בהגייה האשכנזית" },
+            { "lang": "גרמנית", "form": "Maloche / malochen", "translit": "malokhe", "meaning": "עמל קשה / לעבוד קשה", "change": "דרך יידיש מערבית ורוטוולש; נוצר גם פועל גרמני מלא: malochen. נפוצה במיוחד בחבל הרוּר, אזור המכרות" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meshuga",
+      "hebrew": "מְשֻׁגָּע",
+      "translit": "meshugga",
+      "meaning": "מטורף",
+      "mechanism": "leak-to-majority",
+      "certainty": "documented",
+      "sources": [
+        "Duden – \"meschugge\"",
+        "OED – \"meshuga\"",
+        "DWDS – \"meschugge\""
+      ],
+      "journeys": [
+        {
+          "title": "אל הגרמנית והאנגלית",
+          "path": [
+            { "lang": "עברית", "form": "מְשֻׁגָּע", "translit": "meshugga", "meaning": "מטורף", "note": "מקור" },
+            { "lang": "יידיש", "form": "משוגע", "translit": "meshuge", "meaning": "מטורף", "change": "העי\"ן הגרונית נעלמת (ליידיש אין עיצורים גרוניים), התנועה הסופית נחלשת" },
+            { "lang": "גרמנית / אנגלית", "form": "meschugge / meshugge", "translit": "meshuge", "meaning": "מטורף, מופרע", "change": "נקלטת בסלנג הגרמני והאמריקאי כמעט ללא שינוי נוסף" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "takhlit",
+      "hebrew": "תַּכְלִית",
+      "translit": "takhlit",
+      "meaning": "מטרה, עיקר",
+      "mechanism": "leak-to-majority",
+      "certainty": "documented",
+      "sources": [
+        "Duden – \"Tacheles\"",
+        "DWDS – \"Tacheles\""
+      ],
+      "note": "‏\"Tacheles reden\" בגרמנית = לדבר תכל'ס, לדבר לעניין. אותה מילה חזרה גם לעברית המדוברת בצורתה היידית: תכל'ס.",
+      "journeys": [
+        {
+          "title": "אל הגרמנית — Tacheles",
+          "path": [
+            { "lang": "עברית", "form": "תַּכְלִית", "translit": "takhlit", "meaning": "מטרה, עיקר", "note": "מקור" },
+            { "lang": "יידיש", "form": "תּכלית", "translit": "takhles", "meaning": "העיקר, השורה התחתונה", "change": "תי\"ו סופית לא־דגושה נהגית s בהגייה האשכנזית: takhlit ‏← takhles" },
+            { "lang": "גרמנית", "form": "Tacheles", "translit": "takheles", "meaning": "דיבור לעניין", "change": "נקלטת בביטוי \"Tacheles reden\" — לדבר בגלוי וישירות" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mevin",
+      "hebrew": "מֵבִין",
+      "translit": "mevin",
+      "meaning": "מי שמבין",
+      "mechanism": "leak-to-majority",
+      "certainty": "documented",
+      "sources": [
+        "OED – \"maven\"",
+        "Merriam-Webster – \"maven\""
+      ],
+      "note": "מילה שהפכה באנגלית האמריקאית למחמאה: מומחה, ידען. התפרסמה בשנות ה־60 בפרסומות להרינג (\"The Beloved Herring Maven\").",
+      "journeys": [
+        {
+          "title": "אל האנגלית — maven",
+          "path": [
+            { "lang": "עברית", "form": "מֵבִין", "translit": "mevin", "meaning": "מי שמבין", "note": "מקור" },
+            { "lang": "יידיש", "form": "מבֿין", "translit": "meyvn", "meaning": "מבין דבר, מומחה", "change": "הצירה נהגה כדו־תנועה ey בהגייה האשכנזית; התנועה השנייה נבלעת" },
+            { "lang": "אנגלית", "form": "maven", "translit": "maven", "meaning": "מומחה, ידען", "change": "הכתיב מותאם לאנגלית; מתועדת בארה\"ב מאמצע המאה ה־20" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chutzpah",
+      "hebrew": "חֻצְפָּה",
+      "translit": "chutzpah",
+      "meaning": "עזות מצח",
+      "mechanism": "leak-to-majority",
+      "certainty": "documented",
+      "sources": [
+        "OED – \"chutzpah\"",
+        "Duden – \"Chuzpe\"",
+        "Klein, Etymological Dictionary of Hebrew"
+      ],
+      "note": "המילה העברית עצמה ירדה לעברית מן הארמית (חוּצְפָּא) בלשון חכמים — עוד דוגמה לכך שגם לעברית יש שכבות שאולות.",
+      "journeys": [
+        {
+          "title": "אל האנגלית — chutzpah",
+          "path": [
+            { "lang": "עברית (מארמית)", "form": "חֻצְפָּה", "translit": "chutzpah", "meaning": "עזות מצח", "note": "מקור; בלשון חכמים, מארמית חוּצְפָּא" },
+            { "lang": "יידיש", "form": "חוצפּה", "translit": "khutspe", "meaning": "חוצפה", "change": "החי\"ת נהגית kh; התנועה הסופית נחלשת" },
+            { "lang": "אנגלית", "form": "chutzpah", "translit": "khutspa", "meaning": "עזות מצח (לעיתים בהערכה)", "change": "באנגלית האמריקאית קיבלה לעיתים גוון חיובי: העזה נועזת שאי אפשר שלא להתפעל ממנה" }
+          ]
+        },
+        {
+          "title": "אל הגרמנית — Chuzpe",
+          "path": [
+            { "lang": "עברית (מארמית)", "form": "חֻצְפָּה", "translit": "chutzpah", "meaning": "עזות מצח", "note": "מקור" },
+            { "lang": "יידיש", "form": "חוצפּה", "translit": "khutspe", "meaning": "חוצפה", "change": "שכבה עברית ביידיש" },
+            { "lang": "גרמנית", "form": "Chuzpe", "translit": "khutspe", "meaning": "חוצפה, עזות", "change": "נקלטת בגרמנית בכתיב מותאם" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mammon",
+      "hebrew": "מָמוֹן",
+      "translit": "mamon",
+      "meaning": "רכוש, כסף",
+      "mechanism": "wanderword",
+      "certainty": "documented",
+      "sources": [
+        "OED – \"mammon\"",
+        "Wiktionary – μαμωνᾶς",
+        "Klein, Etymological Dictionary of Hebrew"
+      ],
+      "note": "המילה נכנסה לאירופה דרך הברית החדשה (\"לא תוכלו לעבוד את האלוהים ואת הממון\") — ולכן באנגלית Mammon הוא כמעט שם של אליל: פולחן הבצע.",
+      "journeys": [
+        {
+          "title": "אל שפות אירופה — mammon",
+          "path": [
+            { "lang": "עברית / ארמית", "form": "מָמוֹן / מָמוֹנָא", "translit": "mamon / mamona", "meaning": "רכוש, כסף", "note": "מקור; רווחת בלשון חכמים ובארמית" },
+            { "lang": "יוונית", "form": "μαμωνᾶς", "translit": "mamonas", "meaning": "עושר (בברית החדשה)", "change": "מצוטטת בברית החדשה כמילה ארמית, בתעתיק יווני" },
+            { "lang": "לטינית", "form": "mammona", "translit": "mammona", "meaning": "עושר", "change": "דרך תרגומי המקרא ללטינית (הוולגטה)" },
+            { "lang": "אנגלית / גרמנית", "form": "mammon / Mammon", "translit": "mammon", "meaning": "בצע כסף, פולחן הממון", "change": "שינוי סמנטי: מ\"רכוש\" סתם ל\"אליל הבצע\" — בזכות ההקשר בדרשה על ההר" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gehinnom",
+      "hebrew": "גֵּיהִנֹּם",
+      "translit": "gehinnom",
+      "meaning": "גיא בן הינום; התופת",
+      "mechanism": "ancient-religious",
+      "certainty": "documented",
+      "sources": [
+        "OED – \"Gehenna\"",
+        "Leslau, Comparative Dictionary of Geʿez",
+        "Jeffery, The Foreign Vocabulary of the Qur'an"
+      ],
+      "note": "מסע שהתחיל בשם מקום ירושלמי: גיא בן הינום, שבו על פי המקרא הועברו ילדים באש למולך — והפך בשלוש דתות לשמו של הגיהינום עצמו.",
+      "journeys": [
+        {
+          "title": "אל היוונית ואירופה — gehenna",
+          "path": [
+            { "lang": "עברית", "form": "גֵּיא הִנֹּם", "translit": "ge hinnom", "meaning": "עמק ליד ירושלים; מאוחר יותר: התופת", "note": "מקור: שם מקום שהפך לסמל" },
+            { "lang": "יוונית", "form": "γέεννα", "translit": "geenna", "meaning": "התופת (בברית החדשה)", "change": "שם המקום מתכווץ למילה אחת; ה׳ הגרונית נעלמת" },
+            { "lang": "לטינית", "form": "gehenna", "translit": "gehenna", "meaning": "התופת", "change": "דרך הוולגטה; מכאן לצרפתית géhenne ולאנגלית Gehenna" }
+          ]
+        },
+        {
+          "title": "אל הערבית — جهنم",
+          "path": [
+            { "lang": "עברית", "form": "גֵּיהִנֹּם", "translit": "gehinnom", "meaning": "התופת", "note": "מקור" },
+            { "lang": "ערבית", "form": "جهنم", "translit": "jahannam", "meaning": "גיהינום (בקוראן)", "change": "התקבלה בערבית ברובד הדתי; ג׳ עברית מקבילה ל־j ערבית. החוקרים דנים אם התיווך היה ארמי או אתיופי" }
+          ]
+        },
+        {
+          "title": "אל הגעז — ገሃነም",
+          "path": [
+            { "lang": "עברית", "form": "גֵּיהִנֹּם", "translit": "gehinnom", "meaning": "התופת", "note": "מקור" },
+            { "lang": "געז", "form": "ገሃነም", "translit": "gahannam", "meaning": "גיהינום", "change": "נכנסה לגעז ברובד הדתי, בתיווך ארמי־נוצרי, עם תרגומי הכתובים לאתיופית" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amen",
+      "hebrew": "אָמֵן",
+      "translit": "amen",
+      "meaning": "אישור, \"כן יהי\"",
+      "mechanism": "wanderword",
+      "certainty": "documented",
+      "sources": [
+        "OED – \"amen\"",
+        "Jeffery, The Foreign Vocabulary of the Qur'an",
+        "Klein, Etymological Dictionary of Hebrew"
+      ],
+      "note": "אולי המילה העברית המופצת ביותר בעולם — נאמרת מדי יום במיליארדי פיות, כמעט בלי שינוי. שימו לב: אָמֵן בערבית (آمين) היא הַשְׁאָלה — אבל בגעז יש מילה דומה (aman) שהיא כנראה דווקא בת־דודה מלידה. ראו במצב הבלש!",
+      "journeys": [
+        {
+          "title": "אל אירופה — amen",
+          "path": [
+            { "lang": "עברית", "form": "אָמֵן", "translit": "amen", "meaning": "אישור לברכה; מהשורש אמ\"ן — נאמנות", "note": "מקור" },
+            { "lang": "יוונית", "form": "ἀμήν", "translit": "amen", "meaning": "אמן", "change": "עוברת בתרגום השבעים ובברית החדשה כמות שהיא — מילים ליטורגיות מוגנות משינוי" },
+            { "lang": "לטינית", "form": "amen", "translit": "amen", "meaning": "אמן", "change": "ללא שינוי — ומכאן לכל שפות אירופה" }
+          ]
+        },
+        {
+          "title": "אל הערבית — آمين",
+          "path": [
+            { "lang": "עברית", "form": "אָמֵן", "translit": "amen", "meaning": "אישור לברכה", "note": "מקור" },
+            { "lang": "ערבית", "form": "آمين", "translit": "amin", "meaning": "אמן (בתפילה)", "change": "התקבלה ברובד הדתי, כנראה בתיווך ארמי־סורי. זו הַשְׁאָלה — לא מילה ערבית מלידה" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "saq",
+      "hebrew": "שַׂק",
+      "translit": "saq",
+      "meaning": "שק, יריעת בד גס",
+      "mechanism": "wanderword",
+      "certainty": "documented",
+      "sources": [
+        "OED – \"sack\"",
+        "Beekes, Etymological Dictionary of Greek – σάκκος",
+        "Wiktionary – saccus"
+      ],
+      "note": "דוגמה למילה נודדת שאין לה קשר להקשר יהודי: מילת סחר שימושית שנדדה עם הסחורה עצמה. היוונים שאלו אותה מסוחרים דוברי שפה שמית (פיניקית או עברית) — אי אפשר לדעת בדיוק ממי.",
+      "journeys": [
+        {
+          "title": "אל האנגלית והגרמנית — sack",
+          "path": [
+            { "lang": "עברית / פיניקית", "form": "שַׂק", "translit": "saq", "meaning": "שק, אריג גס", "note": "מקור שמי; מצויה גם באכדית saqqu" },
+            { "lang": "יוונית", "form": "σάκκος", "translit": "sakkos", "meaning": "שק, בד שק", "change": "השי\"ן השמאלית נהגית s; העיצור הסופי מוכפל ונוספת סיומת יוונית" },
+            { "lang": "לטינית", "form": "saccus", "translit": "saccus", "meaning": "שק", "change": "התאמה לדקדוק הלטיני" },
+            { "lang": "אנגלית / גרמנית", "form": "sack / Sack", "translit": "sack", "meaning": "שק", "change": "נשאלה מהלטינית לשפות הגרמאניות כבר בעת העתיקה — עוד לפני האנגלית של ימינו" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gamal",
+      "hebrew": "גָּמָל",
+      "translit": "gamal",
+      "meaning": "גמל",
+      "mechanism": "wanderword",
+      "certainty": "documented",
+      "sources": [
+        "OED – \"camel\"",
+        "Beekes, Etymological Dictionary of Greek – κάμηλος"
+      ],
+      "note": "עוד מילת סחר לא־יהודית: החיה נדדה עם שיירות הסוחרים — והשם נדד איתה. גם כאן היוונית שאלה מ\"שמית של סוחרים\" (פיניקית או עברית).",
+      "journeys": [
+        {
+          "title": "אל האנגלית — camel",
+          "path": [
+            { "lang": "עברית / פיניקית", "form": "גָּמָל", "translit": "gamal", "meaning": "גמל", "note": "מקור שמי" },
+            { "lang": "יוונית", "form": "κάμηλος", "translit": "kamelos", "meaning": "גמל", "change": "g קולית נעשית k אטומה; נוספת סיומת יוונית" },
+            { "lang": "לטינית", "form": "camelus", "translit": "camelus", "meaning": "גמל", "change": "התאמה ללטינית" },
+            { "lang": "אנגלית", "form": "camel", "translit": "camel", "meaning": "גמל", "change": "דרך צרפתית עתיקה ונורמנית; הסיומת נשמטת" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tsevaot",
+      "hebrew": "צְבָאוֹת",
+      "translit": "tsevaot",
+      "meaning": "צבאות (בכינוי ה' צבאות)",
+      "mechanism": "ancient-religious",
+      "certainty": "documented",
+      "sources": [
+        "Leslau, Comparative Dictionary of Geʿez – ṣäbaʾot",
+        "EHLL – Ethiopic, Hebrew Loanwords in"
+      ],
+      "note": "דוגמת הליבה של הכלי! איך יודעים שזו הַשְׁאָלה ולא קרבה משפחתית? כי לגעז כבר הייתה מילה משלה ל\"צבא\" — ሠራዊት (seraweet). המילה העברית נכנסה בכל זאת, דרך תרגום המקרא, בתפקיד דתי מיוחד. כשלשפה יש כבר מילה מקומית והזרה נכנסת לצידה בהקשר מסוים — זה טביעת אצבע של הַשְׁאָלה.",
+      "journeys": [
+        {
+          "title": "אל הגעז — ጸባዖት",
+          "path": [
+            { "lang": "עברית", "form": "צְבָאוֹת", "translit": "tsevaot", "meaning": "צבאות; כינוי לה'", "note": "מקור" },
+            { "lang": "געז", "form": "ጸባዖት", "translit": "tsebaot", "meaning": "כינוי לאל (בליטורגיה)", "change": "נכנסה עם תרגום המקרא לגעז כמילה דתית קפואה — לצד המילה המקומית ሠራዊת (seraweet) שנשארה בשימוש יומיומי ל\"צבא\"" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dibber",
+      "hebrew": "דִּבֵּר",
+      "translit": "dibber",
+      "meaning": "לדבר",
+      "mechanism": "leak-to-majority",
+      "certainty": "documented",
+      "sources": [
+        "Rendsburg, \"Rotwelsch, Hebrew Loanwords in\" (EHLL, Brill)",
+        "DWDS – \"dibbern\""
+      ],
+      "note": "בשפת גנבים, מילים שמסתירות את עצם הדיבור הן זהב: dibbern — לדבר בשקט, להתלחש — בדיוק מה שצריך כשלא רוצים שיבינו אותך.",
+      "journeys": [
+        {
+          "title": "אל הרוטוולש — dibbern",
+          "path": [
+            { "lang": "עברית", "form": "דִּבֵּר", "translit": "dibber", "meaning": "לדבר", "note": "מקור" },
+            { "lang": "יידיש מערבית", "form": "דיברן", "translit": "dibern", "meaning": "לדבר", "change": "השורש העברי מקבל סיומת פועל יידית ‎-n" },
+            { "lang": "רוטוולש / גרמנית", "form": "dibbern", "translit": "dibern", "meaning": "לדבר, להתלחש", "change": "נקלט בשפת הגנבים ומשם בניבים גרמניים אזוריים" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "niftar",
+      "hebrew": "נִפְטַר",
+      "translit": "niftar",
+      "meaning": "מת, הלך לעולמו",
+      "mechanism": "leak-to-majority",
+      "certainty": "documented",
+      "sources": [
+        "Rendsburg, \"Rotwelsch, Hebrew Loanwords in\" (EHLL, Brill)"
+      ],
+      "journeys": [
+        {
+          "title": "אל הרוטוולש — niftern",
+          "path": [
+            { "lang": "עברית", "form": "נִפְטַר", "translit": "niftar", "meaning": "מת, הלך לעולמו", "note": "מקור; לשון נקייה — \"נפטר מחובותיו\"" },
+            { "lang": "רוטוולש", "form": "niftern", "translit": "niftern", "meaning": "למות", "change": "השורש העברי מקבל סיומת פועל גרמנית ‎-n; נקלט בשפת הגנבים דרך היידיש המערבית" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shlumiel",
+      "hebrew": "שְׁלֻמִיאֵל",
+      "translit": "shlumiel",
+      "meaning": "שם מקראי (נשיא שבט שמעון)",
+      "mechanism": "leak-to-majority",
+      "certainty": "probable",
+      "sources": [
+        "OED – \"schlemiel\"",
+        "Rosten, The Joys of Yiddish",
+        "במדבר א, ו"
+      ],
+      "note": "למה רק \"משוער\"? הקישור לשם המקראי שְׁלֻמִיאֵל בֶּן צוּרִישַׁדָּי הוא מסורתי (במדרש הוא זוהה עם דמות שסופה רע) — אבל אין תיעוד רציף של הגלגול, ולכן היושרה מחייבת לסמן: סביר, לא ודאי.",
+      "journeys": [
+        {
+          "title": "אל האנגלית — shlemiel",
+          "path": [
+            { "lang": "עברית", "form": "שְׁלֻמִיאֵל", "translit": "shlumiel", "meaning": "שם פרטי מקראי", "note": "מקור משוער — הזיהוי מסורתי ולא מתועד ברצף" },
+            { "lang": "יידיש", "form": "שלימיל", "translit": "shlemil", "meaning": "ביש גדא, לא־יוצלח", "change": "השם הפרטי הופך לשם עצם כללי; התפרסם באירופה בזכות הנובלה \"פטר שלמיל\" (1814)" },
+            { "lang": "אנגלית", "form": "schlemiel / shlemiel", "translit": "shlemiel", "meaning": "לא־יוצלח כרוני", "change": "נקלט באנגלית האמריקאית; ההומור היהודי מבחין בינו לבין shlimazl: השלומיאל שופך את המרק — על השלימזל" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "halleluyah",
+      "hebrew": "הַלְלוּ־יָהּ",
+      "translit": "halelu-yah",
+      "meaning": "שבחו את ה'",
+      "mechanism": "ancient-religious",
+      "certainty": "documented",
+      "sources": [
+        "OED – \"hallelujah\", \"alleluia\"",
+        "Wiktionary – ἀλληλούϊα"
+      ],
+      "note": "מעקב אחרי ה־h: היוונית איבדה אותה (אין לה עיצור כזה באמצע מילה), הלטינית ירשה את הצורה בלעדיה (alleluia) — והאנגלית החזירה אותה (hallelujah) בהשפעת לימוד העברית בתקופת הרפורמציה. מסע הלוך ושוב!",
+      "journeys": [
+        {
+          "title": "אל האנגלית — hallelujah",
+          "path": [
+            { "lang": "עברית", "form": "הַלְלוּ־יָהּ", "translit": "halelu-yah", "meaning": "קריאת שבח מספר תהלים", "note": "מקור" },
+            { "lang": "יוונית", "form": "ἀλληλούϊα", "translit": "allelouia", "meaning": "הללויה", "change": "בתרגום השבעים; היוונית מאבדת את שתי ההאי\"ן — אין לה h" },
+            { "lang": "לטינית", "form": "alleluia", "translit": "alleluia", "meaning": "הללויה", "change": "עוברת ללטינות הכנסייתית — עדיין בלי h" },
+            { "lang": "אנגלית", "form": "hallelujah", "translit": "hallelujah", "meaning": "הללויה", "change": "לצד alleluia הכנסייתית נכנסת גם צורה מתוקנת עם h — כשמתרגמי המקרא חזרו למקור העברי" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shibbolet",
+      "hebrew": "שִׁבֹּלֶת",
+      "translit": "shibbolet",
+      "meaning": "שיבולת; זרם מים",
+      "mechanism": "ancient-religious",
+      "certainty": "documented",
+      "sources": [
+        "OED – \"shibboleth\"",
+        "שופטים יב, ה–ו"
+      ],
+      "note": "המילה שהפכה בעצמה למונח בלשני: בספר שופטים בני גלעד זיהו את בני אפרים במעברות הירדן לפי ההגייה — מי שאמר \"סיבולת\" הוסגר. באנגלית shibboleth פירושה עד היום \"מבחן זהות לשוני\" או סיסמת השתייכות. המילה לא נשאלה בגלל משמעותה — אלא בגלל הסיפור עליה.",
+      "journeys": [
+        {
+          "title": "אל האנגלית — shibboleth",
+          "path": [
+            { "lang": "עברית", "form": "שִׁבֹּלֶת", "translit": "shibbolet", "meaning": "שיבולת / זרם; מילת מבחן במעברות הירדן", "note": "מקור" },
+            { "lang": "אנגלית", "form": "shibboleth", "translit": "shibboleth", "meaning": "מבחן זהות לשוני; סיסמת השתייכות", "change": "נכנסה ישירות דרך תרגומי המקרא לאנגלית (המאה ה־16–17); שינוי סמנטי מוחלט — מהצמח אל הסיפור" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yovel",
+      "hebrew": "יוֹבֵל",
+      "translit": "yovel",
+      "meaning": "קרן איל; שנת היובל",
+      "mechanism": "ancient-religious",
+      "certainty": "documented",
+      "sources": [
+        "OED – \"jubilee\"",
+        "TLFi/CNRTL – \"jubilé\""
+      ],
+      "note": "כאן מסתתרת אטימולוגיה עממית בתוך המסע עצמו: הלטינים שמעו iobelaeus וחשבו שזה קשור לפועל שלהם iubilare — \"לצהול\". הצורה הלטינית שונתה בהתאם (iubilaeus) — טעות עתיקה שנטבעה במילה לתמיד. גם שפות טועות ב\"אטימולוגיה עממית\"!",
+      "journeys": [
+        {
+          "title": "אל האנגלית — jubilee",
+          "path": [
+            { "lang": "עברית", "form": "יוֹבֵל", "translit": "yovel", "meaning": "קרן איל; שנת החמישים", "note": "מקור: תקיעת קרן האיל הכריזה על שנת היובל" },
+            { "lang": "יוונית", "form": "ἰωβηλαῖος", "translit": "iobelaios", "meaning": "של שנת היובל", "change": "בתרגום השבעים; י׳ עיצורית נעשית io" },
+            { "lang": "לטינית", "form": "iubilaeus", "translit": "iubilaeus", "meaning": "שנת יובל", "change": "הצורה משתבשת בהשפעת הפועל הלטיני iubilare (\"לצהול\") — אטימולוגיה עממית בפעולה!" },
+            { "lang": "צרפתית", "form": "jubilé", "translit": "jubilé", "meaning": "יובל, חגיגת שנים עגולות", "change": "i עיצורית נעשית j צרפתית" },
+            { "lang": "אנגלית", "form": "jubilee", "translit": "jubilee", "meaning": "יובל; חגיגה גדולה", "change": "מהצרפתית; המשמעות מתרחבת לכל חגיגת ציון דרך" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shekhar",
+      "hebrew": "שֵׁכָר",
+      "translit": "shekhar",
+      "meaning": "משקה משכר",
+      "mechanism": "wanderword",
+      "certainty": "documented",
+      "sources": [
+        "OED – \"cider\"",
+        "TLFi/CNRTL – \"cidre\""
+      ],
+      "note": "המסע הכי לא צפוי במאגר: איך \"שֵׁכָר\" המקראי הפך ל־cider — מיץ תפוחים מותסס? תזכורת שמשמעות של מילה נודדת יכולה להצטמצם למוצר מקומי אחד לגמרי במקרה.",
+      "journeys": [
+        {
+          "title": "אל האנגלית — cider",
+          "path": [
+            { "lang": "עברית", "form": "שֵׁכָר", "translit": "shekhar", "meaning": "כל משקה משכר שאינו יין", "note": "מקור" },
+            { "lang": "יוונית", "form": "σίκερα", "translit": "sikera", "meaning": "משקה משכר", "change": "בתרגום השבעים; ש׳ ← ‏s, והמילה מקבלת צורה יוונית" },
+            { "lang": "לטינית", "form": "sicera", "translit": "sicera", "meaning": "משקה משכר", "change": "דרך הוולגטה" },
+            { "lang": "צרפתית עתיקה", "form": "cisdre / sidre", "translit": "sidre", "meaning": "משקה תפוחים מותסס", "change": "שינוי צליל גדול (k נשמטת) וצמצום סמנטי: בנורמנדי \"המשקה המשכר\" המקומי היה יין תפוחים — והשם נדבק אליו" },
+            { "lang": "אנגלית", "form": "cider", "translit": "cider", "meaning": "סיידר, יין תפוחים", "change": "מהצרפתית הנורמנית; מהמקרא אל בקבוק הסיידר" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kabbala",
+      "hebrew": "קַבָּלָה",
+      "translit": "kabbala",
+      "meaning": "מסורת מקובלת; תורת הסוד",
+      "mechanism": "wanderword",
+      "certainty": "documented",
+      "sources": [
+        "OED – \"cabal\", \"cabbala\"",
+        "Merriam-Webster – \"cabal\""
+      ],
+      "note": "בונוס שובר מיתוסים: מפורסם ש־CABAL הן ראשי התיבות של חמשת שרי צ'ארלס השני (1670). אבל המילה קיימת באנגלית עשרות שנים לפני כן — ראשי התיבות הם צירוף מקרים משעשע, לא המקור. עוד מיתוס אטימולוגי שכדאי להיזהר ממנו.",
+      "journeys": [
+        {
+          "title": "אל האנגלית — cabal",
+          "path": [
+            { "lang": "עברית", "form": "קַבָּלָה", "translit": "kabbala", "meaning": "מסורת שהתקבלה; תורת הסוד היהודית", "note": "מקור" },
+            { "lang": "לטינית ימי־ביניימית", "form": "cabbala", "translit": "cabbala", "meaning": "תורת הסוד היהודית", "change": "מלומדים נוצרים באירופה התעניינו בקבלה וכתבו עליה בלטינית" },
+            { "lang": "צרפתית", "form": "cabale", "translit": "cabale", "meaning": "קנוניה, מזימה חשאית", "change": "שינוי סמנטי: מ\"תורת סוד\" ל\"סוד\" בכלל — ומשם ל\"מזימה חשאית\"" },
+            { "lang": "אנגלית", "form": "cabal", "translit": "cabal", "meaning": "חבורת קושרים, קנוניה", "change": "נקלטת במאה ה־17; ראשי התיבות המפורסמים של שרי צ'ארלס השני הם צירוף מקרים מאוחר" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kaff",
+      "hebrew": "כְּפָר",
+      "translit": "kfar",
+      "meaning": "יישוב קטן",
+      "mechanism": "leak-to-majority",
+      "certainty": "debated",
+      "sources": [
+        "Duden – \"Kaff\"",
+        "DWDS – \"Kaff\"",
+        "Wolf, Wörterbuch des Rotwelschen"
+      ],
+      "note": "שיעור בזהירות: בגרמנית Kaff הוא \"חור, כפר נידח\". מפתה לקשור לעברית כְּפָר — הצליל והמשמעות מתאימים! אבל רוב החוקרים גוזרים את המילה דווקא מהמילה הרומאנית (צוענית) gav — \"כפר\", שנכנסה לרוטוולש באותם ערוצים בדיוק. כששני מסלולים סבירים מתחרים — חובה לסמן: שנוי במחלוקת.",
+      "journeys": [
+        {
+          "title": "השערה א: מהעברית",
+          "path": [
+            { "lang": "עברית", "form": "כְּפָר", "translit": "kfar", "meaning": "יישוב קטן", "note": "מקור משוער — השערה אחת מתוך שתיים" },
+            { "lang": "יידיש", "form": "כּפֿר", "translit": "kfar", "meaning": "כפר", "change": "שכבה עברית ביידיש" },
+            { "lang": "רוטוולש / גרמנית", "form": "Kaff", "translit": "kaf", "meaning": "כפר נידח, \"חור\"", "change": "לפי השערה זו: קיצור ושיבוש בשפת הגנבים. אבל רוב החוקרים מעדיפים את ההשערה הרומאנית!" }
+          ]
+        },
+        {
+          "title": "השערה ב: מהרומאנית (צוענית)",
+          "path": [
+            { "lang": "רומאני", "form": "gav", "translit": "gav", "meaning": "כפר", "note": "המקור המועדף על רוב החוקרים" },
+            { "lang": "רוטוולש / גרמנית", "form": "Kaff", "translit": "kaf", "meaning": "כפר נידח", "change": "g נעשית k; הרומאנית תרמה לרוטוולש מילים רבות, בדיוק כמו היידיש — ולכן קל להתבלבל בין המקורות" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "copacetic",
+      "hebrew": "הַכֹּל בְּצֶדֶק",
+      "translit": "hakol betzedek",
+      "meaning": "(הטענה העממית)",
+      "mechanism": "leak-to-majority",
+      "certainty": "folk",
+      "sources": [
+        "Merriam-Webster – \"copacetic\" (origin unknown)",
+        "OED – \"copacetic\""
+      ],
+      "folkClaim": "באנגלית האמריקאית copacetic פירושה \"הכל בסדר, מצוין\". הטענה העממית: זו המילה העברית \"הַכֹּל בְּצֶדֶק\" (או \"כל בסדר\") שהגיעה דרך מהגרים יהודים.",
+      "debunk": "המילונים הגדולים (OED, מרים־ובסטר) קובעים: מקור לא ידוע. המילה צצה ב־1919 בהקשרים אמריקאיים שאין להם קשר ליידיש; ההתאמה הפונטית לעברית מאולצת (מאיפה נעלמה הלמ\"ד של \"הכל\"?); ואין שום תיעוד של הביטוי בפי דוברי יידיש. הוצעו גם מקורות מצ'ינוק ומקריאולית לואיזיאנית — וגם הם לא הוכחו. כשאין ראיות, התשובה הנכונה היא: לא יודעים.",
+      "journeys": [
+        {
+          "title": "המסלול הנטען (דחוי)",
+          "path": [
+            { "lang": "עברית (נטען)", "form": "הַכֹּל בְּצֶדֶק", "translit": "hakol betzedek", "meaning": "הכל כשורה", "note": "הטענה העממית — ללא ביסוס" },
+            { "lang": "אנגלית", "form": "copacetic", "translit": "copacetic", "meaning": "מצוין, הכל בסדר", "change": "⚠️ אין שום תיעוד לחוליה הזאת. המקור האמיתי: לא ידוע" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "so-long",
+      "hebrew": "שָׁלוֹם",
+      "translit": "shalom",
+      "meaning": "(הטענה העממית)",
+      "mechanism": "leak-to-majority",
+      "certainty": "folk",
+      "sources": [
+        "OED – \"so long\" (origin uncertain)",
+        "Merriam-Webster – \"so long\""
+      ],
+      "folkClaim": "ברכת הפרידה האנגלית so long נשמעת קצת כמו שָׁלוֹם — ומכאן הטענה העממית שזו \"שלום\" שהשתבשה (או סלאם הערבית בגרסה אחרת של המיתוס).",
+      "debunk": "ה־OED מסמן: מקור לא ודאי — וההשערות הרציניות מפנות דווקא לגרמנית (so lange) או לסקנדינבית (så länge), ביטויים שקיימים באותה משמעות בדיוק. דמיון צלילי בין שתי מילים קצרות הוא ראיה חלשה מאוד: בכל זוג שפות יש צירופי מקרים כאלה. בלי שרשרת תיעוד — אין מסע.",
+      "journeys": [
+        {
+          "title": "המסלול הנטען (דחוי)",
+          "path": [
+            { "lang": "עברית (נטען)", "form": "שָׁלוֹם", "translit": "shalom", "meaning": "ברכת שלום ופרידה", "note": "הטענה העממית — ללא ביסוס" },
+            { "lang": "אנגלית", "form": "so long", "translit": "so long", "meaning": "להתראות", "change": "⚠️ אין תיעוד. ההשערות המקובלות: גרמנית so lange או סקנדינבית så länge" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "abracadabra",
+      "hebrew": "אֶבְרָא כְּדַבְּרָא",
+      "translit": "avra kedavra",
+      "meaning": "(הטענה העממית: \"אברא כדברי\")",
+      "mechanism": "ancient-religious",
+      "certainty": "folk",
+      "sources": [
+        "OED – \"abracadabra\"",
+        "Serenus Sammonicus, Liber Medicinalis (העדות הראשונה, המאה ה־3)"
+      ],
+      "folkClaim": "מילת הקסם abracadabra מוסברת באינטרנט (ובזכות הארי פוטר) כארמית: \"אַבְרָא כְּדַבְּרָא\" — \"אברא כפי שאדבר\". סיפור יפהפה: הקוסם בורא במילים.",
+      "debunk": "העדות הראשונה למילה היא דווקא בספר רפואה לטיני מהמאה ה־3 לספירה (כקמע נגד קדחת), ומקורה האמיתי אינו ידוע — הוצעו יוונית (abraxas) והשערות אחרות. הצירוף הארמי \"אברא כדברא\" אינו מתועד בשום מקור ארמי עתיק — הוא ככל הנראה שחזור מודרני שהומצא כדי להתאים למילה. זה מקרה מובהק של אטימולוגיה הפוכה: קודם המילה, אחר כך הסיפור.",
+      "journeys": [
+        {
+          "title": "המסלול הנטען (דחוי)",
+          "path": [
+            { "lang": "ארמית (נטען)", "form": "אַבְרָא כְּדַבְּרָא", "translit": "avra kedavra", "meaning": "\"אברא כפי שאדבר\"", "note": "הצירוף אינו מתועד בארמית עתיקה — כנראה הומצא בדיעבד" },
+            { "lang": "לטינית", "form": "abracadabra", "translit": "abracadabra", "meaning": "מילת קמע נגד מחלות", "change": "⚠️ העדות הראשונה — המאה ה־3 לספירה, מקור אמיתי לא ידוע" },
+            { "lang": "אנגלית", "form": "abracadabra", "translit": "abracadabra", "meaning": "מילת קסמים", "change": "נפוצה באירופה כמילת קוסמים בימתית" }
+          ]
+        }
+      ]
+    }
+  ],
+  "cognates": [
+    {
+      "id": "shalom-salam",
+      "hebrew": "שָׁלוֹם",
+      "hebrewTranslit": "shalom",
+      "other": { "lang": "ערבית", "form": "سلام", "translit": "salam", "meaning": "שלום" },
+      "root": "השורש הפרוטו־שמי š-l-m",
+      "certainty": "documented",
+      "explanation": "שָׁלוֹם ו־سلام דומות לא כי מישהו שאל ממישהו — אלא כי עברית וערבית הן אחיות: שתיהן ירשו את השורש מהאם הקדומה, הפרוטו־שמית. הראיה: ההתאמה סדירה. שי\"ן עברית מול s ערבית חוזרת בעשרות זוגות (שֶׁמֶשׁ/شمس, שָׁנָה/سنة) — התאמה שיטתית כזו היא חותם של ירושה, לא של הַשְׁאָלה.",
+      "sources": ["Lipiński, Semitic Languages: Outline of a Comparative Grammar", "Klein, Etymological Dictionary of Hebrew"]
+    },
+    {
+      "id": "amen-aman-geez",
+      "hebrew": "אָמֵן",
+      "hebrewTranslit": "amen",
+      "other": { "lang": "געז", "form": "አማን", "translit": "aman", "meaning": "אמת, באמת" },
+      "root": "השורש השמי המשותף ʾ-m-n (נאמנות, יציבות)",
+      "certainty": "probable",
+      "explanation": "בגעז (אתיופית עתיקה) יש אָמֵן ויש אַמָן — ושני סיפורים שונים: אָמֵן הליטורגית נכנסה עם תרגומי המקרא (הַשְׁאָלה), אבל አማን (aman, \"אמת\") היא כנראה מילה געזית מלידה, מאותו שורש שמי קדום ʾ-m-n שירשו שתי השפות. אותה שפה, אותו שורש — שני מנגנונים שונים לגמרי. זו בדיוק ההבחנה שהכלי הזה מלמד.",
+      "sources": ["Leslau, Comparative Dictionary of Geʿez"]
+    },
+    {
+      "id": "sheva-sabaa",
+      "hebrew": "שֶׁבַע",
+      "hebrewTranslit": "sheva",
+      "other": { "lang": "ערבית", "form": "سبعة", "translit": "sab'a", "meaning": "שבע" },
+      "root": "מילת המספר הפרוטו־שמית *šabʿ-",
+      "certainty": "documented",
+      "explanation": "מילות מספר כמעט אף פעם לא נשאלות בין שפות — הן נלמדות בינקות והן מהיציבות שבמילים. כששפות חולקות את מילות המספר שלהן עם התאמות צליל סדירות (שוב שי\"ן/‏s!), זו עדות חזקה במיוחד לקרבה משפחתית. השוו גם: שלוש/ثلاثة, שש/ستة.",
+      "sources": ["Lipiński, Semitic Languages: Outline of a Comparative Grammar"]
+    }
+  ]
+}

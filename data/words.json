@@ -1696,54 +1696,6 @@
       ]
     },
     {
-      "id": "takhat",
-      "hebrew": "תַּחַת",
-      "translit": "takhat",
-      "meaning": "מתחת; בלשון נקייה: ישבן",
-      "mechanism": "leak-to-majority",
-      "certainty": "documented",
-      "sources": [
-        "Etymonline – \"tush\", \"tochus\"",
-        "Wiktionary – \"tuchus\", \"tush\""
-      ],
-      "note": "מילה שילדים אמריקאים שומעים בבית בלי לדעת שהיא עברית מקראית: מילת היחס \"תַּחַת\" (מתחת) שימשה כבר בעברית כלשון נקייה לישבן — והמסע הפך אותה למילת החיבה tush.",
-      "journeys": [
-        {
-          "title": "אל האנגלית — tush",
-          "path": [
-            {
-              "lang": "עברית",
-              "form": "תַּחַת",
-              "translit": "takhat",
-              "meaning": "מתחת; בהשאלה: ישבן",
-              "note": "מקור"
-            },
-            {
-              "lang": "יידיש",
-              "form": "תּחת",
-              "translit": "tokhes",
-              "meaning": "ישבן",
-              "change": "קמץ נהגה o בהגייה האשכנזית ותי\"ו רפה נהגית s: ‏takhat ‏← tokhes"
-            },
-            {
-              "lang": "אנגלית",
-              "form": "tochus / tuchus",
-              "translit": "tokhes",
-              "meaning": "ישבן (בחיוך)",
-              "change": "מגיעה לארה\"ב עם מהגרים דוברי יידיש; מתועדת באנגלית מראשית המאה ה־20"
-            },
-            {
-              "lang": "אנגלית",
-              "form": "tush",
-              "translit": "tush",
-              "meaning": "ישבן (לשון ילדים מחויכת)",
-              "change": "קיצור חיבה אמריקאי (מתועד מ־1962); מהמילה העברית נותרה בעצם רק ההברה הראשונה"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "goy",
       "hebrew": "גּוֹי",
       "translit": "goy",

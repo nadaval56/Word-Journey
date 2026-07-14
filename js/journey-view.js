@@ -126,24 +126,23 @@ export function renderWordList(words, container) {
 /* ---------- רצועת מסע ---------- */
 
 /**
- * רצועת מסע אופקית: תחנה ← (שינוי) ← תחנה.
+ * רצועת מסע: תחנה ← (שינוי) ← תחנה.
+ * אופקית בדסקטופ, אנכית במובייל (ראו ה-CSS) כדי לא לפרוץ את רוחב העמוד.
  * @param {Object} journey - מסלול אחד ({title, path})
- * @param {Object} [opts] - { revealCount } להצגה הדרגתית במצב הבלש
  */
-export function renderJourneyStrip(journey, opts = {}) {
+export function renderJourneyStrip(journey) {
   const strip = el('div', 'journey-strip');
-  const reveal = opts.revealCount ?? journey.path.length;
 
   journey.path.forEach((station, i) => {
     if (i > 0) {
       // המחבר בין תחנות — כאן מוצג ה-change, הבשר החינוכי
-      const hop = el('div', `hop ${i >= reveal ? 'hidden-station' : ''}`);
+      const hop = el('div', 'hop');
       hop.innerHTML = `
         <span class="hop-arrow" aria-hidden="true">⟵</span>
         ${station.change ? `<span class="hop-change">${esc(station.change)}</span>` : ''}`;
       strip.appendChild(hop);
     }
-    const card = el('div', `station ${i === 0 ? 'origin' : ''} ${i >= reveal ? 'hidden-station' : ''}`);
+    const card = el('div', `station ${i === 0 ? 'origin' : ''}`);
     card.innerHTML = `
       <p class="station-lang">${esc(station.lang)}</p>
       <p class="station-form">${bdi(station.form)}</p>

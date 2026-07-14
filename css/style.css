@@ -240,6 +240,16 @@ main { max-width: 980px; margin: 0 auto; padding: 1rem; }
 
 .sources ul { margin: .2rem 0 0; padding-inline-start: 1.2rem; }
 
+.sources li { margin: .15rem 0; }
+
+.source-link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.source-link:hover { color: var(--ink); }
+
 /* ---------- רצועת מסע (Journey Strip) ---------- */
 
 .journey-block { margin: 1.2rem 0; }

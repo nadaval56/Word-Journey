@@ -34,6 +34,50 @@ function bdi(str) {
   return `<bdi>${esc(str)}</bdi>`;
 }
 
+/**
+ * ממפה מחרוזת מקור (למשל 'Duden – "Zoff"') לכתובת URL.
+ * מילונים מוכרים → קישור ישיר לערך; כל השאר (ספרים, הפניות מקרא, אתרים
+ * ייעודיים) → חיפוש גוגל של הציטוט, כדי שכל מקור יהיה לחיץ.
+ */
+function sourceUrl(src) {
+  const e = encodeURIComponent;
+  // כותרת הערך: המונח הראשון במרכאות, ואם אין — הטקסט שאחרי המקף
+  let hw = null;
+  const q = src.match(/"([^"]+)"/);
+  if (q) {
+    hw = q[1];
+  } else {
+    const parts = src.split(/\s[–—-]\s/);
+    if (parts.length > 1) hw = parts[1].split(/[,(]/)[0].trim();
+  }
+  const has = hw && hw.length > 0;
+
+  const wk = /^(?:(nl|de|hu|ru|en)\.)?Wiktionary/i.exec(src);
+  if (wk && has) return `https://${(wk[1] || 'en').toLowerCase()}.wiktionary.org/wiki/${e(hw)}`;
+  if (/^Etymonline/i.test(src) && has) return `https://www.etymonline.com/search?q=${e(hw)}`;
+  if (/^DWDS/i.test(src) && has) return `https://www.dwds.de/wb/${e(hw)}`;
+  if (/^Duden/i.test(src) && has) return `https://www.duden.de/suchen/dudenonline/${e(hw)}`;
+  if (/^OED/i.test(src) && has) return `https://www.oed.com/search/dictionary/?scope=Entries&q=${e(hw)}`;
+  if (/^Merriam-Webster/i.test(src) && has) return `https://www.merriam-webster.com/dictionary/${e(hw)}`;
+  if (/^Etymologiebank/i.test(src) && has) return `https://etymologiebank.nl/trefwoord/${e(hw)}`;
+  if (/^RAE/i.test(src) && has) return `https://dle.rae.es/${e(hw)}`;
+  if (/^(TLFi|CNRTL)/i.test(src) && has) return `https://www.cnrtl.fr/etymologie/${e(hw)}`;
+  if (/^Dictionary\.com/i.test(src) && has) return `https://www.dictionary.com/browse/${e(hw)}`;
+  if (/^Collins/i.test(src) && has) return `https://www.collinsdictionary.com/dictionary/english/${e(hw)}`;
+  if (/^Britannica/i.test(src)) return `https://www.britannica.com/search?query=${e(has ? hw : src)}`;
+  if (/^Wikipedia/i.test(src)) {
+    const lang = /גרמנית/.test(src) ? 'de' : /עברית/.test(src) ? 'he' : 'en';
+    return has ? `https://${lang}.wikipedia.org/wiki/${e(hw)}` : `https://${lang}.wikipedia.org/`;
+  }
+  // ברירת מחדל: חיפוש גוגל של הציטוט המלא — כך גם ספרים והפניות מקרא הופכים ללחיצים
+  return `https://www.google.com/search?q=${e(src)}`;
+}
+
+/** עוטף מחרוזת מקור בקישור נפתח בכרטיסייה חדשה. */
+function sourceLink(src) {
+  return `<a class="source-link" href="${esc(sourceUrl(src))}" target="_blank" rel="noopener noreferrer">${esc(src)}</a>`;
+}
+
 export function certaintyBadge(certainty) {
   const label = META?.certainty?.[certainty]?.label || certainty;
   const warn = certainty === 'folk' ? '⚠️ ' : '';
@@ -232,7 +276,7 @@ export function renderWordDetail(word, container) {
   const sources = el('div', 'sources');
   sources.innerHTML = `
     <strong>📚 מקורות:</strong>
-    <ul>${word.sources.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>`;
+    <ul>${word.sources.map((s) => `<li>${sourceLink(s)}</li>`).join('')}</ul>`;
   container.appendChild(sources);
 }
 

@@ -11,11 +11,13 @@
 
 const synth = window.speechSynthesis;
 
-/** מיפוי שם השפה (בעברית, כפי שבמאגר) לקוד שפה של TTS. null = אין קול ייעודי. */
+/** מיפוי שם השפה (בעברית, כפי שבמאגר) לקוד שפה של TTS. null = אין קול ייעודי.
+ *  הערה: יידיש מטופלת בנפרד ב-speak() — היא נכתבת באותיות עבריות אך נהגית
+ *  אחרת, ולכן משמיעים לה את התעתיק ולא את הצורה. */
 function langCode(langLabel) {
   const l = langLabel || '';
   if (/ערבית/.test(l)) return 'ar';
-  if (/עברית|ארמית|יידיש/.test(l)) return 'he'; // ליידיש אין קול; עברית הכי קרובה לצורה הכתובה
+  if (/עברית|ארמית/.test(l)) return 'he';
   if (/יוונית/.test(l)) return 'el';
   if (/לטינית/.test(l)) return 'it';            // אין קול ללטינית; איטלקית קרובה בהגייה
   if (/צרפתית/.test(l)) return 'fr';
@@ -56,23 +58,35 @@ function speak(form, translit, langLabel) {
   if (!synth) return;
   synth.cancel();
 
-  const code = langCode(langLabel);
-  const voice = pickVoice(code);
-  // הצורה הראשונה (לפני " / ")
-  const primary = (form || '').split('/')[0].trim();
+  const label = langLabel || '';
+  const primaryForm = (form || '').split('/')[0].trim();
+  const primaryTranslit = (translit || '').split('/')[0].trim();
 
-  let text = primary;
-  let useCode = code;
-  // אם אין קול לשפה והצורה אינה לטינית — עדיף לומר את התעתיק בקול כללי
-  if (!voice && !isLatin(primary) && translit) {
-    text = translit.split('/')[0].trim();
-    useCode = null;
+  let text; let code; let voice;
+
+  if (/יידיש/.test(label)) {
+    // יידיש נכתבת באותיות עבריות אך נהגית כשפה גרמאנית. קול עברי היה מבטא
+    // אותה כעברית מודרנית ("שבת" ← shabbat) — לא המילה האמיתית. לכן משמיעים
+    // את התעתיק (shabes) בקול גרמני, הקרוב ביותר פונטית ליידיש.
+    const yi = pickVoice('yi'); // אם במקרה מותקן קול יידיש — עדיף
+    if (yi) { text = primaryForm; voice = yi; code = 'yi'; }
+    else if (primaryTranslit) { text = primaryTranslit; voice = pickVoice('de'); code = 'de'; }
+    else { text = primaryForm; voice = pickVoice('he'); code = 'he'; }
+  } else {
+    code = langCode(label);
+    voice = pickVoice(code);
+    text = primaryForm;
+    // שפה בלי קול וצורה לא־לטינית → אומרים את התעתיק בקול ברירת המחדל
+    if (!voice && !isLatin(primaryForm) && primaryTranslit) {
+      text = primaryTranslit;
+      code = null;
+    }
   }
   if (!text) return;
 
   const u = new SpeechSynthesisUtterance(text);
   if (voice) u.voice = voice;
-  if (useCode) u.lang = useCode;
+  if (code) u.lang = code;
   u.rate = 0.85; // מעט לאט כדי לשמוע את השינוי
   synth.speak(u);
 }

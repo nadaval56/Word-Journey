@@ -8,11 +8,12 @@
  */
 
 import { loadData, filterWords, collectTargetLangs, getWord } from './data-loader.js';
-import { initViews, renderWordList, renderWordDetail, certaintyBadge } from './journey-view.js';
+import { initViews, renderWordList, renderWordDetail, certaintyBadge, renderLawsIndex, lawName } from './journey-view.js';
 import { initGlossary, annotate } from './glossary.js';
+import { initAudio } from './audio.js';
 
 let data = null;
-const filters = { query: '', mechanism: '', certainty: '', lang: '' };
+const filters = { query: '', mechanism: '', certainty: '', law: '', lang: '' };
 
 const $ = (sel) => document.querySelector(sel);
 
@@ -44,6 +45,11 @@ function route() {
       }
       break;
     }
+    case 'laws':
+      renderLawsIndex(data, $('#laws-list'));
+      annotate($('#laws-list'));
+      $('#view-laws').hidden = false;
+      break;
     case 'about':
       $('#view-about').hidden = false;
       break;
@@ -57,42 +63,44 @@ function route() {
 /* ---------- חיפוש וסינון ---------- */
 
 function anyFilterActive() {
-  return !!(filters.query || filters.mechanism || filters.certainty || filters.lang);
+  return !!(filters.query || filters.mechanism || filters.certainty || filters.law || filters.lang);
+}
+
+/** מאפס את כל שדות הסינון (בלי לרנדר). */
+function resetFilters() {
+  filters.query = '';
+  filters.mechanism = '';
+  filters.certainty = '';
+  filters.law = '';
+  filters.lang = '';
+  if ($('#search-input')) $('#search-input').value = '';
+  ['#filter-mechanism', '#filter-certainty', '#filter-lang'].forEach((s) => { if ($(s)) $(s).value = ''; });
 }
 
 function applyFilters() {
   const result = filterWords(data.words, filters);
   renderWordList(result, $('#word-list'));
-  $('#results-count').textContent = `${result.length} מתוך ${data.words.length} מילים`;
+  // כשמסננים לפי חוק צליל (אין לו תפריט) — מציינים זאת בטקסט הספירה
+  const lawNote = filters.law ? ` · חוק הצליל: ${lawName(filters.law)}` : '';
+  $('#results-count').textContent = `${result.length} מתוך ${data.words.length} מילים${lawNote}`;
   const clearBtn = $('#clear-filters');
   if (clearBtn) clearBtn.hidden = !anyFilterActive();
 }
 
 /** מאפס את כל הסינונים ומציג את כל המילים. */
 function clearFilters() {
-  filters.query = '';
-  filters.mechanism = '';
-  filters.certainty = '';
-  filters.lang = '';
-  if ($('#search-input')) $('#search-input').value = '';
-  ['#filter-mechanism', '#filter-certainty', '#filter-lang'].forEach((s) => { if ($(s)) $(s).value = ''; });
+  resetFilters();
   applyFilters();
   window.scrollTo(0, 0);
 }
 
 /**
- * סינון בלחיצה על תגית (ודאות/מנגנון) בכל מקום באתר.
+ * סינון בלחיצה על תגית (ודאות / מנגנון / חוק צליל) בכל מקום באתר.
  * מאפס את שאר הסינונים ומציג את כל הערכים בעלי אותה תגית.
  */
 function applyBadgeFilter(type, value) {
-  filters.query = '';
-  filters.mechanism = '';
-  filters.certainty = '';
-  filters.lang = '';
+  resetFilters();
   filters[type] = value;
-
-  if ($('#search-input')) $('#search-input').value = '';
-  ['#filter-mechanism', '#filter-certainty', '#filter-lang'].forEach((s) => { if ($(s)) $(s).value = ''; });
   const sel = { mechanism: '#filter-mechanism', certainty: '#filter-certainty', lang: '#filter-lang' }[type];
   if (sel && $(sel)) $(sel).value = value;
 
@@ -171,6 +179,7 @@ async function boot() {
   setupFilters();
   setupAbout();
   initGlossary();
+  initAudio();
   setupBadgeFilters();
   annotate($('#view-about')); // הסבר "מה זה" — טקסט סטטי, מסמנים פעם אחת
   window.addEventListener('hashchange', route);

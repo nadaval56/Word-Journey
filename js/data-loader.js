@@ -33,6 +33,10 @@ function normalizeWord(word) {
   const set = new Set([word.mechanism]);
   word.journeys.forEach((j) => { if (j.mechanism) set.add(j.mechanism); });
   word.allMechanisms = [...set];
+  // כל חוקי הצליל שהמילה מדגימה (מתוך תיוג התחנות)
+  const laws = new Set();
+  word.journeys.forEach((j) => j.path.forEach((st) => (st.laws || []).forEach((l) => laws.add(l))));
+  word.allLaws = [...laws];
 }
 
 /** כל שפות היעד הקיימות במאגר (לרשימת הסינון), ממוינות לפי א"ב. */
@@ -52,6 +56,7 @@ export function filterWords(words, f) {
   return words.filter((w) => {
     if (f.mechanism && !w.allMechanisms.includes(f.mechanism)) return false;
     if (f.certainty && w.certainty !== f.certainty) return false;
+    if (f.law && !w.allLaws.includes(f.law)) return false;
     if (f.lang && !w.finalStations.some((s) => s.lang === f.lang)) return false;
     if (q) {
       const haystack = [

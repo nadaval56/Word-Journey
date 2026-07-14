@@ -8,10 +8,13 @@
  */
 
 let META = null;
+let LAW_BY_ID = {};
 
 /** חייבים לקרוא פעם אחת לפני שימוש — מזריק את המטא־נתונים (תוויות). */
 export function initViews(meta) {
   META = meta;
+  LAW_BY_ID = {};
+  (meta.soundLaws || []).forEach((law) => { LAW_BY_ID[law.id] = law; });
 }
 
 /* ---------- כלי עזר ---------- */
@@ -32,6 +35,23 @@ function esc(str) {
 /** עוטף צורה לועזית ב-bdi לבידוד כיווני. */
 function bdi(str) {
   return `<bdi>${esc(str)}</bdi>`;
+}
+
+/** כפתור השמעה (TTS) לתחנה — הטיפול בלחיצה ב-audio.js. */
+function sayBtn(station) {
+  const form = station.form || '';
+  return `<button type="button" class="say" data-say="${esc(form)}" data-translit="${esc(station.translit || '')}" data-lang="${esc(station.lang || '')}" aria-label="השמעת ${esc(form)}" title="השמע">🔊</button>`;
+}
+
+/** תגי חוקי הצליל שתחנה מדגימה — לחיצים לסינון (הטיפול ב-app.js). */
+function lawChips(station) {
+  if (!station.laws || !station.laws.length) return '';
+  const chips = station.laws.map((id) => {
+    const law = LAW_BY_ID[id];
+    if (!law) return '';
+    return `<span class="law-chip" data-filter-type="law" data-filter-value="${esc(id)}" role="button" tabindex="0" title="חוק צליל: ${esc(law.name)} — לחצו לכל המילים">${esc(law.symbol)}</span>`;
+  }).join('');
+  return chips ? `<span class="hop-laws">${chips}</span>` : '';
 }
 
 /**
@@ -143,12 +163,13 @@ export function renderJourneyStrip(journey) {
       const hop = el('div', 'hop');
       hop.innerHTML = `
         <span class="hop-arrow" aria-hidden="true">⟵</span>
-        ${station.change ? `<span class="hop-change">${esc(station.change)}</span>` : ''}`;
+        ${station.change ? `<span class="hop-change">${esc(station.change)}</span>` : ''}
+        ${lawChips(station)}`;
       strip.appendChild(hop);
     }
     const card = el('div', `station ${i === 0 ? 'origin' : ''}`);
     card.innerHTML = `
-      <p class="station-lang">${esc(station.lang)}</p>
+      <p class="station-lang">${esc(station.lang)} ${sayBtn(station)}</p>
       <p class="station-form">${bdi(station.form)}</p>
       ${station.translit ? `<p class="station-translit">${bdi(station.translit)}</p>` : ''}
       ${station.meaning ? `<p class="station-meaning">${esc(station.meaning)}</p>` : ''}
@@ -185,11 +206,11 @@ function buildTree(journeys) {
 function renderTreeNode(node, isOrigin) {
   const wrap = el('div', 'tree-branch');
   if (node.station.change) {
-    wrap.appendChild(el('p', 'tree-change', esc(node.station.change)));
+    wrap.appendChild(el('p', 'tree-change', `${esc(node.station.change)} ${lawChips(node.station)}`));
   }
   const card = el('div', `tree-node-card ${isOrigin ? 'origin' : ''}`);
   card.innerHTML = `
-    <p class="station-lang">${esc(node.station.lang)}</p>
+    <p class="station-lang">${esc(node.station.lang)} ${sayBtn(node.station)}</p>
     <p class="station-form">${bdi(node.station.form)}${node.station.translit ? ` · <bdi>${esc(node.station.translit)}</bdi>` : ''}</p>
     ${node.station.meaning ? `<p class="station-meaning">${esc(node.station.meaning)}</p>` : ''}`;
   wrap.appendChild(card);
@@ -290,4 +311,32 @@ function renderStrips(word, container) {
     block.appendChild(renderJourneyStrip(j));
     container.appendChild(block);
   });
+}
+
+/* ---------- אינדקס חוקי הצליל ---------- */
+
+/** מרנדר את כרטיסי חוקי הצליל. כל כרטיס לחיץ ומסנן את הרשימה לפי החוק. */
+export function renderLawsIndex(data, container) {
+  container.innerHTML = '';
+  (data.meta.soundLaws || []).forEach((law) => {
+    const count = data.words.filter((w) => w.allLaws.includes(law.id)).length;
+    const card = el('div', 'law-card');
+    card.dataset.filterType = 'law';
+    card.dataset.filterValue = law.id;
+    card.setAttribute('role', 'button');
+    card.tabIndex = 0;
+    card.innerHTML = `
+      <div class="law-symbol">${esc(law.symbol)}</div>
+      <div class="law-body">
+        <h3 class="law-name">${esc(law.name)}</h3>
+        <p class="law-desc">${esc(law.description)}</p>
+        <span class="law-count">← הצגת ${count} המילים שמדגימות את החוק</span>
+      </div>`;
+    container.appendChild(card);
+  });
+}
+
+/** מחזיר את שם חוק הצליל לפי מזהה (לשימוש ב-app.js בשורת הסינון). */
+export function lawName(id) {
+  return LAW_BY_ID[id]?.name || id;
 }

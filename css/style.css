@@ -500,6 +500,97 @@ main { max-width: 980px; margin: 0 auto; padding: 1rem; }
 
 .gloss-pop-close:hover { color: var(--c-folk); }
 
+/* ---------- כפתור השמעה (TTS) ---------- */
+.say {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: .85rem;
+  line-height: 1;
+  padding: 0 .15rem;
+  opacity: .55;
+  vertical-align: middle;
+}
+
+.say:hover, .say:focus-visible { opacity: 1; outline: none; }
+
+/* ---------- תגי חוקי צליל על המחבר (hop) ---------- */
+.hop-laws {
+  display: inline-flex;
+  gap: .25rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: .2rem;
+}
+
+.law-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 .35rem;
+  font-size: .8rem;
+  font-weight: 700;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.law-chip:hover, .law-chip:focus-visible { background: var(--accent); color: #fff; outline: none; }
+
+.tree-change .hop-laws { margin-top: 0; }
+
+/* ---------- אינדקס חוקי הצליל ---------- */
+.laws-intro { margin-bottom: 1rem; }
+
+.laws-intro h2 { color: var(--accent); margin: .3rem 0; }
+
+.laws-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: .8rem;
+}
+
+.law-card {
+  display: flex;
+  gap: .8rem;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: .9rem 1rem;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  text-align: start;
+}
+
+.law-card:hover, .law-card:focus-visible { border-color: var(--accent); outline: none; }
+
+.law-symbol {
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 10px;
+  min-width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.law-body { flex: 1; min-width: 0; }
+
+.law-name { margin: 0 0 .2rem; font-size: 1.05rem; }
+
+.law-desc { margin: 0 0 .5rem; font-size: .9rem; color: var(--ink-soft); }
+
+.law-count { font-size: .88rem; font-weight: 700; color: var(--accent); }
+
 /* ---------- מסלול אנכי למסלולים ארוכים (4+ תחנות) — בכל רוחב מסך ---------- */
 /* מסלול ארוך פורץ את רוחב העמוד גם בדסקטופ; מציגים אותו כציר זמן אנכי
    ממורכז, כך שאין צורך בגלילה אופקית. */

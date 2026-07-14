@@ -114,7 +114,30 @@ main { max-width: 980px; margin: 0 auto; padding: 1rem; }
   color: var(--ink);
 }
 
-.results-count { color: var(--ink-soft); font-size: .9rem; margin: .3rem .2rem .6rem; }
+.results-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .6rem;
+  flex-wrap: wrap;
+  margin: .3rem .2rem .6rem;
+}
+
+.results-count { color: var(--ink-soft); font-size: .9rem; margin: 0; }
+
+.clear-filters {
+  min-height: 36px;
+  padding: .25rem 1rem;
+  font-size: .9rem;
+  font-weight: 700;
+  border: 1.5px solid var(--accent);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.clear-filters:hover { background: var(--accent); color: #fff; }
 
 /* ---------- תגי ודאות ומנגנון ---------- */
 
@@ -477,9 +500,35 @@ main { max-width: 980px; margin: 0 auto; padding: 1rem; }
 
 .gloss-pop-close:hover { color: var(--c-folk); }
 
-/* ---------- מובייל: מסלול אנכי ---------- */
-/* במסכים צרים הרצועה האופקית "פורצת" מגבולות העמוד; מציגים אותה במאונך:
-   תחנה מעל תחנה, עם חץ כלפי מטה וטקסט השינוי ביניהן. */
+/* ---------- מסלול אנכי למסלולים ארוכים (4+ תחנות) — בכל רוחב מסך ---------- */
+/* מסלול ארוך פורץ את רוחב העמוד גם בדסקטופ; מציגים אותו כציר זמן אנכי
+   ממורכז, כך שאין צורך בגלילה אופקית. */
+.journey-strip--long {
+  flex-direction: column;
+  align-items: stretch;
+  overflow-x: visible;
+  gap: 0;
+  max-width: 460px;
+  margin-inline: auto;
+  padding: .3rem 0 .6rem;
+}
+
+.journey-strip--long .station,
+.journey-strip--long .hop { flex: 0 0 auto; width: 100%; }
+
+.journey-strip--long .hop {
+  flex-direction: row;
+  justify-content: center;
+  gap: .5rem;
+  padding: .35rem .4rem;
+}
+
+.journey-strip--long .hop-arrow { font-size: 0; }
+.journey-strip--long .hop-arrow::before { content: "↓"; font-size: 1.4rem; }
+.journey-strip--long .hop-change { margin-top: 0; text-align: start; }
+
+/* ---------- מובייל: כל המסלולים אנכיים ---------- */
+/* במסכים צרים גם רצועה קצרה "פורצת" מגבולות העמוד; מציגים הכל במאונך. */
 @media (max-width: 640px) {
   .journey-strip {
     flex-direction: column;

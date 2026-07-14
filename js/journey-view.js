@@ -78,15 +78,17 @@ function sourceLink(src) {
   return `<a class="source-link" href="${esc(sourceUrl(src))}" target="_blank" rel="noopener noreferrer">${esc(src)}</a>`;
 }
 
+// כל תג ודאות/מנגנון נושא data-filter-* והוא לחיץ: לחיצה מסננת את הרשימה
+// (המימוש ב-app.js). role/tabindex הופכים אותו נגיש גם למקלדת.
 export function certaintyBadge(certainty) {
   const label = META?.certainty?.[certainty]?.label || certainty;
   const warn = certainty === 'folk' ? '⚠️ ' : '';
-  return `<span class="badge badge-${esc(certainty)}">${warn}${esc(label)}</span>`;
+  return `<span class="badge badge-${esc(certainty)}" data-filter-type="certainty" data-filter-value="${esc(certainty)}" role="button" tabindex="0" title="הצגת כל הערכים בתגית: ${esc(label)}">${warn}${esc(label)}</span>`;
 }
 
 export function mechanismBadge(mechanism) {
   const label = META?.mechanisms?.[mechanism]?.short || mechanism;
-  return `<span class="badge badge-mechanism">${esc(label)}</span>`;
+  return `<span class="badge badge-mechanism" data-filter-type="mechanism" data-filter-value="${esc(mechanism)}" role="button" tabindex="0" title="הצגת כל הערכים במנגנון: ${esc(label)}">${esc(label)}</span>`;
 }
 
 /* ---------- רשימת מילים ---------- */

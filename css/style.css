@@ -138,6 +138,15 @@ main { max-width: 980px; margin: 0 auto; padding: 1rem; }
   font-weight: 600;
 }
 
+/* תגית לחיצה = סינון */
+.badge[data-filter-type] { cursor: pointer; }
+
+.badge[data-filter-type]:hover,
+.badge[data-filter-type]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
 .certainty-legend {
   display: flex;
   gap: .4rem;

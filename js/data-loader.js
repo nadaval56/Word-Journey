@@ -14,8 +14,15 @@ export async function loadData() {
   if (!res.ok) throw new Error(`Failed to load dataset: HTTP ${res.status}`);
   const data = await res.json();
   data.words.forEach(normalizeWord);
+  // מיון אלפביתי לפי המילה העברית (לפי אותיות הבסיס, בהתעלם מניקוד)
+  data.words.sort((a, b) => hebrewSortKey(a.hebrew).localeCompare(hebrewSortKey(b.hebrew), 'he'));
   cache = data;
   return data;
+}
+
+/** מפתח מיון: מסיר ניקוד, טעמים, מקף ורווחים — כדי למיין לפי אותיות הבסיס בלבד. */
+function hebrewSortKey(s) {
+  return s.normalize('NFC').replace(/[֑-ׇ]/g, '').replace(/\s/g, '');
 }
 
 /** מוסיף שדות נגזרים למילה: תחנות יעד סופיות ורשימת מנגנונים בפועל. */

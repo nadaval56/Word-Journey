@@ -62,6 +62,43 @@ function applyFilters() {
   $('#results-count').textContent = `${result.length} מתוך ${data.words.length} מילים`;
 }
 
+/**
+ * סינון בלחיצה על תגית (ודאות/מנגנון) בכל מקום באתר.
+ * מאפס את שאר הסינונים ומציג את כל הערכים בעלי אותה תגית.
+ */
+function applyBadgeFilter(type, value) {
+  filters.query = '';
+  filters.mechanism = '';
+  filters.certainty = '';
+  filters.lang = '';
+  filters[type] = value;
+
+  if ($('#search-input')) $('#search-input').value = '';
+  ['#filter-mechanism', '#filter-certainty', '#filter-lang'].forEach((s) => { if ($(s)) $(s).value = ''; });
+  const sel = { mechanism: '#filter-mechanism', certainty: '#filter-certainty', lang: '#filter-lang' }[type];
+  if (sel && $(sel)) $(sel).value = value;
+
+  if (parseRoute().name === 'browse') {
+    applyFilters();
+    window.scrollTo(0, 0);
+  } else {
+    location.hash = '#/browse'; // route() יריץ applyFilters עם הסינון שנקבע
+  }
+}
+
+function setupBadgeFilters() {
+  const handler = (e) => {
+    const chip = e.target.closest('[data-filter-type]');
+    if (!chip) return;
+    if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
+    e.preventDefault();   // מונע ניווט של כרטיס-הקישור שמכיל את התגית
+    e.stopPropagation();
+    applyBadgeFilter(chip.dataset.filterType, chip.dataset.filterValue);
+  };
+  document.addEventListener('click', handler);
+  document.addEventListener('keydown', handler);
+}
+
 function setupFilters() {
   // מנגנונים ורמות ודאות — מתוך המטא של המאגר, כדי שהכל יישאר מסונכרן
   const mechSelect = $('#filter-mechanism');
@@ -115,6 +152,7 @@ async function boot() {
   setupFilters();
   setupAbout();
   initGlossary();
+  setupBadgeFilters();
   annotate($('#view-about')); // הסבר "מה זה" — טקסט סטטי, מסמנים פעם אחת
   window.addEventListener('hashchange', route);
   route();

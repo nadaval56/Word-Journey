@@ -4,13 +4,11 @@
  * מסלולים:
  *   #/browse       — רשימת המילים + סינון (ברירת המחדל)
  *   #/word/<id>    — עמוד מילה: מסע / עץ הסתעפות
- *   #/game         — מצב בלש
  *   #/about        — הסבר: הַשְׁאָלה מול קרבה
  */
 
 import { loadData, filterWords, collectTargetLangs, getWord } from './data-loader.js';
 import { initViews, renderWordList, renderWordDetail, certaintyBadge } from './journey-view.js';
-import { initGame } from './game.js';
 import { initGlossary, annotate } from './glossary.js';
 
 let data = null;
@@ -46,10 +44,6 @@ function route() {
       }
       break;
     }
-    case 'game':
-      initGame($('#game-container'), data);
-      $('#view-game').hidden = false;
-      break;
     case 'about':
       $('#view-about').hidden = false;
       break;

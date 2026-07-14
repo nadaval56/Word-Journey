@@ -306,9 +306,6 @@ main { max-width: 980px; margin: 0 auto; padding: 1rem; }
 
 .hop .hop-change { font-size: .78rem; color: var(--ink-soft); margin-top: .25rem; }
 
-/* תחנה מוסתרת במצב חשיפה הדרגתית (מצב בלש) */
-.station.hidden-station, .hop.hidden-station { display: none; }
-
 /* ---------- עץ הסתעפות ---------- */
 
 .view-toggle { display: flex; gap: .4rem; margin: .8rem 0; }
@@ -372,104 +369,6 @@ main { max-width: 980px; margin: 0 auto; padding: 1rem; }
 }
 
 .tree-change::before { content: "↓ "; color: var(--accent); }
-
-/* ---------- מצב בלש ---------- */
-
-.game-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: .6rem;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-}
-
-.game-scores { display: flex; gap: .5rem; flex-wrap: wrap; }
-
-.score-chip {
-  background: var(--surface);
-  border: 1.5px solid var(--line);
-  border-radius: 999px;
-  padding: .2rem .8rem;
-  font-size: .9rem;
-  font-weight: 700;
-}
-
-.score-chip .val { color: var(--accent); }
-
-.game-card {
-  background: var(--surface);
-  border: 1.5px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 1.2rem 1rem;
-  text-align: center;
-}
-
-.game-kicker { color: var(--ink-soft); font-size: .95rem; margin: 0; }
-
-.game-mystery {
-  font-size: 2.2rem;
-  font-weight: 900;
-  margin: .5rem 0 .2rem;
-  overflow-wrap: break-word;
-}
-
-.game-hint { color: var(--ink-soft); margin: 0 0 1rem; }
-
-.game-options {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: .6rem;
-  margin-top: .8rem;
-}
-
-.game-option {
-  min-height: var(--tap);
-  font-size: 1.15rem;
-  font-weight: 700;
-  padding: .6rem;
-  border: 2px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--bg);
-  color: var(--ink);
-  cursor: pointer;
-}
-
-.game-option:not(:disabled):hover { border-color: var(--accent); }
-
-.game-option.correct { border-color: var(--c-documented); background: var(--c-documented-bg); }
-
-.game-option.wrong { border-color: var(--c-folk); background: var(--c-folk-bg); }
-
-.game-option:disabled { opacity: .85; }
-
-.game-feedback { font-size: 1.15rem; font-weight: 800; margin: .8rem 0 .2rem; }
-
-.game-feedback.good { color: var(--c-documented); }
-
-.game-feedback.bad { color: var(--c-folk); }
-
-.game-explain { text-align: start; margin-top: .8rem; }
-
-.game-actions { display: flex; justify-content: center; gap: .6rem; margin-top: 1rem; flex-wrap: wrap; }
-
-.btn {
-  min-height: var(--tap);
-  padding: .5rem 1.4rem;
-  font-size: 1.05rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 999px;
-  background: var(--accent);
-  color: #fff;
-  cursor: pointer;
-}
-
-.btn-secondary { background: var(--surface); color: var(--accent); border: 2px solid var(--accent); }
-
-/* חשיפת מסע הדרגתית במצב בלש */
-.reveal-area { text-align: start; margin-top: 1rem; }
 
 /* ---------- עמוד "מה זה" ---------- */
 
@@ -569,10 +468,39 @@ main { max-width: 980px; margin: 0 auto; padding: 1rem; }
 
 .gloss-pop-close:hover { color: var(--c-folk); }
 
-/* מובייל צר: כרטיסי תחנה קטנים יותר */
+/* ---------- מובייל: מסלול אנכי ---------- */
+/* במסכים צרים הרצועה האופקית "פורצת" מגבולות העמוד; מציגים אותה במאונך:
+   תחנה מעל תחנה, עם חץ כלפי מטה וטקסט השינוי ביניהן. */
+@media (max-width: 640px) {
+  .journey-strip {
+    flex-direction: column;
+    align-items: stretch;
+    overflow-x: visible;
+    gap: 0;
+    padding: .3rem 0 .6rem;
+  }
+
+  .station {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .hop {
+    flex: 0 0 auto;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    gap: .5rem;
+    padding: .35rem .4rem;
+  }
+
+  /* חץ כלפי מטה במקום חץ שמאלה */
+  .hop .hop-arrow { font-size: 0; }
+  .hop .hop-arrow::before { content: "↓"; font-size: 1.4rem; }
+
+  .hop .hop-change { margin-top: 0; text-align: start; }
+}
+
 @media (max-width: 480px) {
-  .station { flex-basis: 165px; }
-  .hop { flex-basis: 120px; }
   .site-title { font-size: 1.5rem; }
-  .game-mystery { font-size: 1.7rem; }
 }

@@ -11,6 +11,7 @@
 import { loadData, filterWords, collectTargetLangs, getWord } from './data-loader.js';
 import { initViews, renderWordList, renderWordDetail, certaintyBadge } from './journey-view.js';
 import { initGame } from './game.js';
+import { initGlossary, annotate } from './glossary.js';
 
 let data = null;
 const filters = { query: '', mechanism: '', certainty: '', lang: '' };
@@ -38,6 +39,7 @@ function route() {
       const word = param && getWord(data, param);
       if (word) {
         renderWordDetail(word, $('#word-detail'));
+        annotate($('#word-detail'));
         $('#view-word').hidden = false;
       } else {
         location.hash = '#/browse';
@@ -118,6 +120,8 @@ async function boot() {
   initViews(data.meta);
   setupFilters();
   setupAbout();
+  initGlossary();
+  annotate($('#view-about')); // הסבר "מה זה" — טקסט סטטי, מסמנים פעם אחת
   window.addEventListener('hashchange', route);
   route();
 }

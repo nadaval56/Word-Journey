@@ -519,6 +519,56 @@ main { max-width: 980px; margin: 0 auto; padding: 1rem; }
 
 .empty-state { text-align: center; color: var(--ink-soft); padding: 2rem 0; }
 
+/* ---------- מילון מונחים מוקפץ ---------- */
+
+/* מונח לחיץ בתוך טקסט — קו תחתון מנוקד עדין, יורש את סגנון הטקסט סביבו */
+.gloss {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: help;
+  border-bottom: 1.5px dotted var(--accent);
+  line-height: inherit;
+}
+
+.gloss:hover, .gloss:focus-visible { background: var(--accent-soft); outline: none; }
+
+.gloss-pop {
+  position: absolute;
+  z-index: 50;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1.5px solid var(--accent);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 18px rgba(43, 35, 24, .28);
+  padding: .7rem .9rem .8rem;
+  font-size: .92rem;
+  line-height: 1.55;
+}
+
+.gloss-pop h4 { margin: 0 .8rem .3rem 0; color: var(--accent); font-size: 1rem; }
+
+.gloss-pop p { margin: 0; }
+
+.gloss-pop-close {
+  position: absolute;
+  inset-inline-start: .2rem;
+  top: .1rem;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.gloss-pop-close:hover { color: var(--c-folk); }
+
 /* מובייל צר: כרטיסי תחנה קטנים יותר */
 @media (max-width: 480px) {
   .station { flex-basis: 165px; }

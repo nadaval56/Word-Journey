@@ -56,10 +56,28 @@ function route() {
 
 /* ---------- חיפוש וסינון ---------- */
 
+function anyFilterActive() {
+  return !!(filters.query || filters.mechanism || filters.certainty || filters.lang);
+}
+
 function applyFilters() {
   const result = filterWords(data.words, filters);
   renderWordList(result, $('#word-list'));
   $('#results-count').textContent = `${result.length} מתוך ${data.words.length} מילים`;
+  const clearBtn = $('#clear-filters');
+  if (clearBtn) clearBtn.hidden = !anyFilterActive();
+}
+
+/** מאפס את כל הסינונים ומציג את כל המילים. */
+function clearFilters() {
+  filters.query = '';
+  filters.mechanism = '';
+  filters.certainty = '';
+  filters.lang = '';
+  if ($('#search-input')) $('#search-input').value = '';
+  ['#filter-mechanism', '#filter-certainty', '#filter-lang'].forEach((s) => { if ($(s)) $(s).value = ''; });
+  applyFilters();
+  window.scrollTo(0, 0);
 }
 
 /**
@@ -123,6 +141,7 @@ function setupFilters() {
   mechSelect.addEventListener('change', (e) => { filters.mechanism = e.target.value; applyFilters(); });
   certSelect.addEventListener('change', (e) => { filters.certainty = e.target.value; applyFilters(); });
   langSelect.addEventListener('change', (e) => { filters.lang = e.target.value; applyFilters(); });
+  $('#clear-filters').addEventListener('click', clearFilters);
 
   // מקרא תגי ודאות מתחת לסינון
   const legend = Object.keys(data.meta.certainty).map(certaintyBadge).join(' ');

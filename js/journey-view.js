@@ -134,6 +134,8 @@ export function renderWordList(words, container) {
  */
 export function renderJourneyStrip(journey) {
   const strip = el('div', 'journey-strip');
+  // מסלול ארוך (4+ תחנות) פורץ את רוחב העמוד בדסקטופ — מציגים אותו במאונך
+  if (journey.path.length >= 4) strip.classList.add('journey-strip--long');
 
   journey.path.forEach((station, i) => {
     if (i > 0) {
